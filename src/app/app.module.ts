@@ -15,7 +15,6 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 import { IPublicClientApplication, PublicClientApplication, InteractionType, BrowserCacheLocation } from '@azure/msal-browser';
 import { MsalGuard, MsalInterceptor, MsalBroadcastService, MsalInterceptorConfiguration, MsalModule, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalGuardConfiguration, MsalRedirectComponent } from '@azure/msal-angular';
 // Component
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 import {environment} from '../environments/environment';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -69,7 +68,6 @@ export function httpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
   ],
   imports: [
     BrowserModule,

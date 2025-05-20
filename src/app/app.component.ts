@@ -13,10 +13,10 @@ import {LanguageService} from './shared/services/language.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  standalone: false
+  standalone: false,
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Angular - MSAL Example';
   loginDisplay = false;
   tokenExpiration: string = '';
   private readonly _destroying$ = new Subject<void>();

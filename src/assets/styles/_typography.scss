@@ -1,0 +1,54 @@
+// Mappa tipografica valida per SCSS
+$typographys: (
+  // Font base
+  font-family-base: ('Inter', 'Helvetica Neue', sans-serif),
+
+  // Peso
+  font-weight-light: 300,
+  font-weight-regular: 400,
+  font-weight-medium: 500,
+  font-weight-bold: 700,
+
+  // Dimensioni testo
+  font-size-xs: 0.75rem,   // 12px
+  font-size-sm: 0.875rem,  // 14px
+  font-size-md: 1rem,      // 16px
+  font-size-lg: 1.25rem,   // 20px
+  font-size-xl: 1.5rem,    // 24px
+  font-size-xxl: 2rem,     // 32px
+
+  // Line-height
+  line-height-base: 1.5,
+  line-height-tight: 1.25
+);
+
+// Output automatico in :root come CSS custom properties
+:root {
+  @each $name, $value in $typographys {
+    --typography-#{$name}: #{$value};
+  }
+}
+
+// Classi tipografiche di utilità
+.heading-xl {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color);
+}
+
+.heading-lg {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color);
+}
+
+.text-body {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  color: var(--text-color);
+}
+
+.text-muted {
+  font-size: var(--font-size-sm);
+  color: var(--muted-text);
+}

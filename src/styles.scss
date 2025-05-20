@@ -1,5 +1,13 @@
+@use './assets/styles/index' as *;
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+  font-family: var(--font-family-base), serif;
+  font-size: var(--font-size-md);
+  color: var(--text-color);
+  background-color: var(--background);
+
 }

@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MsalGuard } from '@azure/msal-angular';
-import {DashboardComponent} from './dashboard/dashboard.component';
-
 
 const routes: Routes = [
   {
+    path: 'gestori',
+    loadChildren: () => import('./gestori/gestori.module').then(m => m.GestoriModule)
+  },
+  {
+    path: '',
+    redirectTo: 'gestori/dashboard',
+    pathMatch: 'full'
+  },
+  {
     path: '**',
-    component: DashboardComponent,
-    canActivate: [MsalGuard]
+    redirectTo: 'gestori/dashboard'
   }
 ];
+
+
 
 // Create an NgModule that contains all the directives for the routes specified above
 @NgModule({

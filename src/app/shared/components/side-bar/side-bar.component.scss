@@ -1,0 +1,31 @@
+.side-bar {
+  width: var(--variable-sidebar-width);
+  max-width: var(--variable-sidebar-width);
+  height: var(--variable-sidebar-height);
+  max-height: var(--variable-sidebar-height);
+  background-color: var(--color-gray-300);
+  padding: 10px;
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    li {
+      padding: 8px 12px;
+      width: 100%;
+      border-radius: var(--variable-sidebar-radius-link);
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--color-white);
+      }
+
+      span {
+        font-size: var(--typography-font-size-md);
+        font-weight: var(--font-weight-medium);
+      }
+    }
+  }
+}

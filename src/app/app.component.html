@@ -1,3 +1,4 @@
+<!--
 <a class="navbar navbar-dark bg-primary" href="/">
   <a class="navbar-brand">
     {{ 'TEST' | translate}} </a>
@@ -6,8 +7,22 @@
     <button *ngIf="loginDisplay" class="btn btn-secondary" (click)="logout()">Sign Out</button>
   </a>
 </a>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+-->
+
+<section class="wrapper">
+
+  <app-side-bar></app-side-bar>
+
+  <section class="content">
+    <div class="header">
+      THis sio header
+    </div>
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </section>
+</section>
+
+
 
 

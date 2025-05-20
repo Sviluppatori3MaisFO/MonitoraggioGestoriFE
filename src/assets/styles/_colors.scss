@@ -1,0 +1,71 @@
+// Palette di colori
+$colors: (
+  // Background neutrali
+  white: #ffffff,
+  gray-50: #fefefe,
+  gray-100: #fdfdfd,
+  gray-200: #f2f2f2,   // da input utente
+  gray-300: #eeeef4,   // da input utente
+  gray-400: #dcdce4,
+  gray-500: #bfc1c9,
+  gray-600: #a0a2ab,
+  gray-700: #7d7f87,
+  gray-800: #4c4f55,
+  gray-900: #2b2d31,
+
+  // Testo e bordi
+  text-color: #2b2d31,
+  muted-text: #7d7f87,
+  border-color: #dcdce4,
+
+  // Colori principali della dashboard
+  primary: #3b82f6,
+  success: #10b981,
+  warning: #f59e0b,
+  danger:  #ef4444,
+  info:    #0ea5e9,
+
+  // Background principali
+  background: #ffffff,
+  background-alt: #f2f2f2,
+  card-background: #eeeef4
+);
+
+// Output automatico in :root come CSS custom properties
+:root {
+  @each $name, $value in $colors {
+    --color-#{""+$name}: #{$value};
+  }
+}
+
+/*
+            ALTERNATIVE
+// BASE
+$white: #ffffff;
+$gray-50: #f9f9f9;
+$gray-100: #f2f2f2;
+$gray-200: #eeeef4;
+$gray-300: #dcdce2;
+$gray-400: #bfbfc9;
+$gray-500: #a0a0b2;
+$gray-600: #808096;
+$gray-700: #5e5e72;
+$gray-800: #3d3d4f;
+$gray-900: #1f1f2f;
+
+// ACCENTI E COLORI DI STATO
+$primary: #4a5cff;     // blu acceso per elementi principali
+$success: #27ae60;     // verde per stati positivi
+$warning: #f39c12;     // arancione per avvisi
+$danger:  #e74c3c;     // rosso per errori
+$info:    #3498db;     // blu chiaro per messaggi informativi
+
+// BACKGROUND E UI
+$background-main: $white;
+$background-soft: $gray-100;
+$background-panel: $gray-200;
+$border-color: $gray-300;
+$text-color: $gray-800;
+$text-muted: $gray-500;
+
+*/
