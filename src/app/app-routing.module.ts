@@ -7,7 +7,7 @@ import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
   {
-    path: 'profile',
+    path: 'dashboard',
     component: DashboardComponent,
     canActivate: [
       MsalGuard

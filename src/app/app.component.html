@@ -5,9 +5,6 @@
     <button *ngIf="loginDisplay" class="btn btn-secondary" (click)="logout()">Sign Out</button>
   </a>
 </a>
-<a class="profileButton">
-  <a [routerLink]="['dashboard']" class="btn btn-secondary" *ngIf="loginDisplay">View Profile</a>
-</a>
 <div class="container">
   <router-outlet></router-outlet>
 </div>
