@@ -15,7 +15,7 @@
 
     thead {
       border-radius: 12px;
-      background-color: var(--color-gray-200);
+      background-color: var(--color-table-header-bg);
 
       tr {
         th {
@@ -50,7 +50,7 @@
         }
 
         &:nth-child(even) {
-          background-color: var(--color-gray-300);
+          background-color: var(--color-table-bg-odd);
         }
       }
     }
