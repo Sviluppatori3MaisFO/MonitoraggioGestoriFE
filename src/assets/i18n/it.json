@@ -1,3 +1,5 @@
 {
- "DASHBOARD_STATO_GESTORI" : "Dashboard stato dei gestori"
+ "DASHBOARD_STATO_GESTORI" : "Dashboard stato dei gestori",
+  "ESCI" : "Esci",
+  "DASHBOARD_GENERALE_GESTORI" : "Dati generali"
 }

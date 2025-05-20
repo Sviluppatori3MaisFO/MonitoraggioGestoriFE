@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthService} from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  get username () {
+    return this.authService.account?.username;
+  }
+
+
+  constructor(public authService: AuthService,) {
+  }
 }

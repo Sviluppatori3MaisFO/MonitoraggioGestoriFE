@@ -20,6 +20,7 @@ import {environment} from '../environments/environment';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { SharedModule} from './shared/shared.module';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TotalSpinnerComponent} from './shared/components/spinner/total-spinner/total-spinner.component';
 
 
 // msal
@@ -105,6 +106,6 @@ export function httpLoaderFactory(http: HttpClient) {
     MsalGuard,
     MsalBroadcastService
   ],
-  bootstrap: [AppComponent, MsalRedirectComponent]
+  bootstrap: [AppComponent, MsalRedirectComponent, TotalSpinnerComponent]
 })
 export class AppModule { }

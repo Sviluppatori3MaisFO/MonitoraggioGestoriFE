@@ -13,6 +13,12 @@ $colors: (
   gray-800: #4c4f55,
   gray-900: #2b2d31,
 
+  // bag with opacity
+  gray-800-op95: rgba(76, 79, 85, 0.95),
+  gray-800-op8: rgba(76, 79, 85, 0.8),
+  gray-800-op4: rgba(76, 79, 85, 0.4),
+  gray-900-op4: rgba(43, 45, 49, 0.4),
+
   // Testo e bordi
   text-color: #2b2d31,
   muted-text: #7d7f87,

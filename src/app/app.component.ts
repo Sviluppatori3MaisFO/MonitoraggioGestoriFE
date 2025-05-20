@@ -1,13 +1,6 @@
 // Required for Angular
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-
-// Required for MSAL
-import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
-import { EventMessage, EventType, InteractionStatus, RedirectRequest } from '@azure/msal-browser';
-
-// Required for RJXS
-import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import {AuthService} from './auth/auth.service';
 import {LanguageService} from './shared/services/language.service';
 
 @Component({
@@ -16,61 +9,14 @@ import {LanguageService} from './shared/services/language.service';
   standalone: false,
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
-  loginDisplay = false;
-  tokenExpiration: string = '';
-  private readonly _destroying$ = new Subject<void>();
+export class AppComponent implements OnInit {
 
   constructor(
-    @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
-    private authService: MsalService,
-    private msalBroadcastService: MsalBroadcastService,
+    private authService: AuthService,
     private langService: LanguageService
-  ) { }
-
-  // On initialization of the page, display the page elements based on the user state
-  ngOnInit(): void {
-    this.msalBroadcastService.inProgress$
-      .pipe(
-        filter((status: InteractionStatus) => status === InteractionStatus.None),
-        takeUntil(this._destroying$)
-      )
-      .subscribe(() => {
-        this.setLoginDisplay();
-
-        if (!this.loginDisplay) {
-          this.login();
-        }
-      });
-
-    // Used for storing and displaying token expiration
-    this.msalBroadcastService.msalSubject$.pipe(filter((msg: EventMessage) => msg.eventType === EventType.ACQUIRE_TOKEN_SUCCESS)).subscribe(msg => {
-      this.tokenExpiration=  (msg.payload as any).expiresOn;
-      localStorage.setItem('tokenExpiration', this.tokenExpiration);
-    });
+  ) {
+    this.authService.init()
   }
 
-  // If the user is logged in, present the user with a "logged in" experience
-  setLoginDisplay() {
-    this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
-  }
-
-  // Log the user in and redirect them if MSAL provides a redirect URI otherwise go to the default URI
-  login() {
-    if (this.msalGuardConfig.authRequest) {
-      this.authService.loginRedirect({ ...this.msalGuardConfig.authRequest } as RedirectRequest);
-    } else {
-      this.authService.loginRedirect();
-    }
-  }
-
-  // Log the user out
-  logout() {
-    this.authService.logoutRedirect();
-  }
-
-  ngOnDestroy(): void {
-    this._destroying$.next(undefined);
-    this._destroying$.complete();
-  }
+  ngOnInit(): void {}
 }
