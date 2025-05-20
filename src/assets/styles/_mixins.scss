@@ -1,5 +1,58 @@
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/*
+
+===================== TABLE PRE FAB
+
+*/
+.table-wrap {
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+
+    th,td {
+      padding: 6px 8px;
+    }
+
+    thead {
+      border-radius: 12px;
+      background-color: var(--color-gray-200);
+
+      tr {
+        th {
+
+          span {
+            font-weight: var(--typography-font-weight-bold);
+          }
+
+          &:not(:last-child) {
+            border-right: 1px solid var(--color-white);
+          }
+
+          &:first-child {
+            border-top-left-radius: 12px;
+            -moz-border-radius-topleft: 12px;
+          }
+
+          &:last-child {
+            border-top-right-radius: 12px;
+            -moz-border-radius-topright: 12px;
+          }
+        }
+
+      }
+    }
+
+    tbody {
+      tr {
+
+        td {
+          font-weight: var(--typography-font-weight-light);
+        }
+
+        &:nth-child(even) {
+          background-color: var(--color-gray-300);
+        }
+      }
+    }
+  }
 }

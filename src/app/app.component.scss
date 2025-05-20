@@ -2,21 +2,21 @@
   display: flex;
   height: 100vh;
 
-.content {
-  flex-grow: 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: fit-content(100px) 1fr;
+  .content {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: fit-content(100px) 1fr;
 
-  .header {
-    border-bottom: 1px solid var(--color-gray-500);
-    padding: 1rem;
-  }
+    .header {
+      border-bottom: 1px solid var(--color-gray-500);
+      padding: 1rem;
+    }
 
-  .main-content {
-    padding: 1rem;
-    overflow-y: auto;
+    .main-content {
+      padding: 1rem;
+      overflow-y: auto;
+    }
   }
-}
 
 }
