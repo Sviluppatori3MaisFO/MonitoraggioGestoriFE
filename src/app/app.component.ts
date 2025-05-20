@@ -35,6 +35,10 @@ export class AppComponent implements OnInit, OnDestroy {
       )
       .subscribe(() => {
         this.setLoginDisplay();
+
+        if (!this.loginDisplay) {
+          this.login();
+        }
       });
 
     // Used for storing and displaying token expiration
