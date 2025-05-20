@@ -10,13 +10,13 @@
 -->
 
 <section class="wrapper">
-
-  <app-side-bar></app-side-bar>
+  <div class="header">
+    <app-header></app-header>
+  </div>
 
   <section class="content">
-    <div class="header">
-      <app-header></app-header>
-    </div>
+
+    <app-side-bar></app-side-bar>
     <main class="main-content">
       <router-outlet></router-outlet>
     </main>

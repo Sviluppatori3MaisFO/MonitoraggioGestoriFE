@@ -1,15 +1,15 @@
 .wrapper {
   display: flex;
+  flex-direction: column;
   height: 100vh;
 
   .content {
-    flex-grow: 1;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: fit-content(100px) 1fr;
+    grid-template-columns: var(--variable-sidebar-width) 1fr;
+    grid-template-rows: 1fr;
 
     .header {
-      border-bottom: 1px solid var(--color-gray-500);
+      border-bottom: 1px solid var(--color-header-border);
       padding: 1rem;
     }
 

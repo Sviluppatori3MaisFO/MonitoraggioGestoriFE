@@ -4,13 +4,19 @@
 
 */
 .table-wrap {
+  border-style: solid;
+  border-color: #e5e7eb;
+  border-width: 0;
 
   table {
     border-collapse: collapse;
     width: 100%;
 
-    th,td {
-      padding: 6px 8px;
+    tr {
+      th,td {
+        padding: 6px 8px;
+        border-bottom: 1px solid #e5e7eb;
+      }
     }
 
     thead {
@@ -22,6 +28,7 @@
 
           span {
             font-weight: var(--typography-font-weight-bold);
+            color: var(--color-text);
           }
 
           &:not(:last-child) {
@@ -47,6 +54,9 @@
 
         td {
           font-weight: var(--typography-font-weight-light);
+          span {
+            color: var(--color-text-mute);
+          }
         }
 
         &:nth-child(even) {

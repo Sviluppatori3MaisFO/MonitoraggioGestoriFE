@@ -1,5 +1,5 @@
-// Palette di colori
-$colors: (
+/*// Palette di colori
+$light: (
   // Background neutrali
   white: #ffffff,
   gray-50: #fefefe,
@@ -35,43 +35,53 @@ $colors: (
   background: #ffffff,
   background-alt: #f2f2f2,
   card-background: #eeeef4
+);*/
+
+
+
+$light-theme: (
+  text: #09090b,
+  background: #fafafa,
+  background-r: #f5f4fb,
+  primary: #462cd8,
+  secondary: #8e7cf3,
+  accent: #684dfe,
+
+  hover: #fff,
+  text-hover: #05040c,
+  header-border: #bfc1c9,
+
+  text-mute: #78787d,
+  logo: #000
+);
+$dark-theme: (
+  text: #e8e6f4,
+  background: #05040c,
+  background-r: #05040c,
+  primary: #4127d3,
+  secondary: #1e0c83,
+  accent: #1b01b2,
+
+  hover: #fff,
+  text-hover: #05040c,
+  header-border: #f2f2f2,
+
+  text-mute: #78787d,
+  logo: #fff
 );
 
-// Output automatico in :root come CSS custom properties
-:root {
-  @each $name, $value in $colors {
-    --color-#{""+$name}: #{$value};
+// 2. Mixin per generare le CSS variables
+@mixin theme-vars($map) {
+  @each $key, $value in $map {
+    --color-#{$key}: #{$value};
   }
 }
 
-/*
-            ALTERNATIVE
-// BASE
-$white: #ffffff;
-$gray-50: #f9f9f9;
-$gray-100: #f2f2f2;
-$gray-200: #eeeef4;
-$gray-300: #dcdce2;
-$gray-400: #bfbfc9;
-$gray-500: #a0a0b2;
-$gray-600: #808096;
-$gray-700: #5e5e72;
-$gray-800: #3d3d4f;
-$gray-900: #1f1f2f;
+// 3. Applica le variabili ai temi
+:root {
+  @include theme-vars($light-theme);
+}
 
-// ACCENTI E COLORI DI STATO
-$primary: #4a5cff;     // blu acceso per elementi principali
-$success: #27ae60;     // verde per stati positivi
-$warning: #f39c12;     // arancione per avvisi
-$danger:  #e74c3c;     // rosso per errori
-$info:    #3498db;     // blu chiaro per messaggi informativi
-
-// BACKGROUND E UI
-$background-main: $white;
-$background-soft: $gray-100;
-$background-panel: $gray-200;
-$border-color: $gray-300;
-$text-color: $gray-800;
-$text-muted: $gray-500;
-
-*/
+[data-theme='dark'] {
+  @include theme-vars($dark-theme);
+}

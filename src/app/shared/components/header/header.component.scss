@@ -1,10 +1,18 @@
 .header-wrap {
   width: 100%;
-  height: auto;
+  height: var(--variable-header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 16px;
 
+  .title {
+    svg {
+      path {
+        fill: var(--color-logo)
+      }
+    }
+  }
   .user {
     font-size: var(--typography-font-size-sm);
     font-weight: var(--typography-font-weight-bold);
