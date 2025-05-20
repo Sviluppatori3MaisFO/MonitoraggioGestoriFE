@@ -14,20 +14,22 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 // Required for MSAL
 import { IPublicClientApplication, PublicClientApplication, InteractionType, BrowserCacheLocation } from '@azure/msal-browser';
 import { MsalGuard, MsalInterceptor, MsalBroadcastService, MsalInterceptorConfiguration, MsalModule, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalGuardConfiguration, MsalRedirectComponent } from '@azure/msal-angular';
+// Component
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 
+import {environment} from '../environments/environment';
+
+
+// msal
 const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      // 'Application (client) ID' of app registration in the Microsoft Entra admin center - this value is a GUID
-      clientId: "39fc3291-1b13-46a7-bab1-ef1faf8ab663",
-      // Full directory URL, in the form of https://login.microsoftonline.com/<tenant>
-      authority: "https://login.microsoftonline.com/9e220e66-b958-406e-8dee-9626333d77a5",
-      // Must be the same redirectUri as what was provided in your app registration.
-      redirectUri: "http://localhost:4200",
+      clientId: environment.msalConfig.clientId,
+      authority: environment.msalConfig.authority,
+      redirectUri: environment.msalConfig.redirectUri,
     },
     cache: {
       cacheLocation: BrowserCacheLocation.LocalStorage,
@@ -35,7 +37,6 @@ export function MSALInstanceFactory(): IPublicClientApplication {
     }
   });
 }
-
 // MSAL Interceptor is required to request access tokens in order to access the protected resource (Graph)
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
