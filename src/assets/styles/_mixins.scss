@@ -4,10 +4,13 @@
 
 */
 .table-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 
   table {
     border-collapse: collapse;
-    width: 100%;
+    width: var(--width-table-input, 100%);
 
     th,td {
       padding: 6px 8px;
