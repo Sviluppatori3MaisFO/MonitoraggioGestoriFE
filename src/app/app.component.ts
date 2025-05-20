@@ -8,6 +8,7 @@ import { EventMessage, EventType, InteractionStatus, RedirectRequest } from '@az
 // Required for RJXS
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
+import {LanguageService} from './shared/services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
-    private msalBroadcastService: MsalBroadcastService
+    private msalBroadcastService: MsalBroadcastService,
+    private langService: LanguageService
   ) { }
 
   // On initialization of the page, display the page elements based on the user state

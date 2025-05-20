@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // HTTP modules required by MSAL
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 
 // Required for MSAL
 import { IPublicClientApplication, PublicClientApplication, InteractionType, BrowserCacheLocation } from '@azure/msal-browser';
@@ -18,6 +18,9 @@ import { MsalGuard, MsalInterceptor, MsalBroadcastService, MsalInterceptorConfig
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import {environment} from '../environments/environment';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import { SharedModule} from './shared/shared.module';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 
 // msal
@@ -57,7 +60,12 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   };
 }
 
-// Create an NgModule that contains the routes and MSAL configurations
+// lang
+export function httpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +75,15 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MsalModule
+    MsalModule,
+    SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     {
