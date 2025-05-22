@@ -13,10 +13,12 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private langService: LanguageService
+    private langService: LanguageService,
   ) {
     this.authService.init()
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 }

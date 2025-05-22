@@ -1,10 +1,13 @@
 {
  "DASHBOARD_STATO_GESTORI" : "Dashboard stato dei gestori",
   "ESCI" : "Esci",
-  "DASHBOARD_GENERALE_GESTORI" : "Dati generali",
+  "DASHBOARD_GENERALE_GESTORI" : "Tutti i gestori",
   "STATO_GESTORI" : "Monitoraggio Gestori",
   "DT_TRACCIATO_CEDIS" : "Tracciamento Cedis",
   "DT_TRACCIATO_MANUALE_MENSILE" : "Tracciamento Team Dati Mensile",
   "DT_TRACCIATO_MANUALE_SETT" : "Tracciamento Team Dati Sett.",
-  "GESTORI" : "Gestori"
+  "GESTORI" : "Gestori",
+  "STATO_IMPORTAZIONE_GESTORE" : "Stato Importazione Gestore",
+  "DT_IMPORTATA" : "Dt. Importata",
+  "DT_IMPORT_PREVISTA" : "Dt. Arrivo Flussi"
 }

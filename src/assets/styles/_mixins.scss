@@ -59,3 +59,55 @@
     }
   }
 }
+
+
+/*
+
+===================== BUTTON PRE FAB
+
+*/
+button {
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &.btn-img {
+    transition: 0.2s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+    img {
+      max-width: 32px;
+    }
+  }
+}
+
+/*
+
+===================== TEXT PRE FAB
+
+*/
+h3 {
+  font-size: var(--typography-font-size-lg);
+  font-weight: var(--typography-font-weight-bold);
+}
+
+
+
+/*
+
+===================== CARD PRE FAB
+
+*/
+.card-t1 {
+  background-color: var(--color-bg-card1);
+  box-shadow: 0 0 0 1px rgba(#000, .05), 0 20px 50px 0 rgba(#000, .1);
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 1.25rem;
+  position: relative;
+  transition: .15s ease-in;
+}

@@ -38,14 +38,18 @@ $def-colors: (
   warning: #f59e0b,
   danger:  #ef4444,
   info:    #0ea5e9,
-  white:   #fff,
+  white:   map-get($palette, white),
 
   // Background principali
-  background: #ffffff,
-  background-alt: #f2f2f2,
-  card-background: #eeeef4,
+  background: map-get($palette, white),
+  background-alt: map-get($palette, gray-200),
+  card-background: map-get($palette, gray-300),
   sidebar-bg: map-get($palette, gray-300),
   table-bg-odd: map-get($palette, gray-300),
+  card1-bg: map-get($palette, white),
+
+  // borders
+  border-bottom-tb: map-get($palette, gray-300),
 );
 
 // Output automatico in :root come CSS custom properties

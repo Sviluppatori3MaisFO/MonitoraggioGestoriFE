@@ -1,0 +1,75 @@
+.dashboard-gestore {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+
+
+    .gestore-name {
+      font-weight: var(--typography-font-weight-bold);
+      font-size: var(--typography-font-size-xl);
+    }
+
+    .operations {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+
+  // _________________________________   BODY
+  .center {
+    display: grid;
+    align-items: stretch;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 32px;
+
+    .dt-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background-color: #cdd6f5;
+
+      .dash {
+        table {
+
+          td,th {
+            border-bottom: 1px solid var(--color-border-bottom-tb);
+            padding: 6px 8px;
+          }
+          tr {
+            border-bottom: 1px solid var(--color-border);
+
+            th {
+
+            }
+            td {
+
+            }
+          }
+        }
+      }
+
+      .ttttt {
+
+      }
+    }
+
+  }
+
+
+  // _________________________________   FOOTER
+  .footer {
+    display: grid;
+    align-items: stretch;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 32px;
+  }
+}

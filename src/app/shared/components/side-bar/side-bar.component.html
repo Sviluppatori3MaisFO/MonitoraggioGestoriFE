@@ -1,19 +1,10 @@
 <nav class="side-bar">
   <ul>
     <li (click)="onGestore(null)"><span>{{ 'DASHBOARD_GENERALE_GESTORI' | translate }}</span></li>
-    <li (click)="onGestore(2)"><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
-    <li><span>GESTORE</span></li>
+    <li *ngFor="let itm of gestori"
+        (click)="onGestore(itm.idGestore)">
+      <span>{{ (!itm.dsGestore || itm.dsGestore==''? '-' : itm.dsGestore) | lowercase }}</span>
+    </li>
   </ul>
 
   <ul>
