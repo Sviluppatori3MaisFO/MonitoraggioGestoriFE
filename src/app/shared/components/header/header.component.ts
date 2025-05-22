@@ -9,9 +9,7 @@ import {AuthService} from '../../../auth/auth.service';
 })
 export class HeaderComponent {
 
-  get username () {
-    return this.authService.account?.username;
-  }
+
 
 
   constructor(public authService: AuthService,) {

@@ -1,11 +1,24 @@
 section.general-dashboard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
   .head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 0 0 10px 0;
+    height: 100%;
+
     span {
       text-align: center;
       font-size: var(--typography-font-size-xl);
       font-weight: var(--typography-font-weight-bold);
     }
+  }
+
+  .table-wrap {
+    position: relative;
   }
 }

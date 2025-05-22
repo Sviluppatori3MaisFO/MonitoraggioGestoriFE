@@ -1,62 +1,100 @@
 <section class="dashboard-gestore">
-  <div class="head card-t1">
-    <div class="gestore-name">UNICREDIT</div>
-
-    <div class="operations">
-      <button class="btn-img new-gestore">
-        <img src="./assets/media/icon/plus.svg" alt="">
-      </button>
-      <button class="btn-img settings-gestore">
-        <img src="./assets/media/icon/gear.svg" alt="">
-      </button>
-    </div>
-  </div>
-
-  <!-- CENTER -->
-  <div class="center">
-    <!-- =-======================  card-t1 1 -->
-   <div class="dt-wrap card-t1">
-
-     <div class="state-import ">
-       <h3>{{ "STATO_IMPORTAZIONE_GESTORE" | translate }}</h3>
-     </div>
-
-     <div class="dash ">
-       <table>
-         <tr>
-           <th></th>
-           <th>{{ 'DT_IMPORTATA' | translate }}</th>
-           <th>{{ 'DT_IMPORT_PREVISTA' | translate }}</th>
-         </tr>
-
-         <tr>
-           <td>MM</td>
-           <td>22/32/3232</td>
-           <td>22/32 - 22/32</td>
-         </tr>
-         <tr>
-           <td>SS</td>
-           <td>22/32/3232</td>
-           <td>22/32 - 33/32</td>
-         </tr>
-       </table>
-     </div>
-   </div>
-
-    <!-- ========================= card-t1 2 -->
-    <div class="card-t1 ttttt">
-      <h3>NEW CARD</h3>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="card-t1 chart" style="height: 100px">
-      <h3>NEW CARD</h3>
-    </div>
-    <div class="card-t1">
-      <h3>NEW CARD</h3>
+  <ng-container *ngIf="gestore">
+  <!--============================================================================================================================== header -->
+    <div class="my-page-header head">
+        <div class="gestore-name">{{ gestore?.dsGestore }}</div>
+        <div class="operations">
+          <button class="btn-img new-gestore">
+            <img src="./assets/media/icon/plus.svg" alt="">
+          </button>
+          <button class="btn-img settings-gestore">
+            <img src="./assets/media/icon/gear.svg" alt="">
+          </button>
+        </div>
     </div>
 
-  </div>
+
+    <!-- ============================================================================================================================== CENTER -->
+    <div class="center">
+      <!-- ========================= card-t1 2 -->
+      <div class="card-t1 info-gestore-card">
+        <h3>{{ "INFO_GESTORE" | translate}}</h3>
+
+        <ul >
+          <li>
+            <span>{{ 'EMAIL_GESTORE_1' | translate}}:</span>
+            <span>{{gestore.emailGestore1}}</span>
+          </li>
+          <li *ngIf="gestore?.emailGestore2">
+            <span>{{ 'EMAIL_GESTORE_2' | translate}}: </span>
+            <span>{{gestore.emailGestore2}}</span>
+          </li>
+          <!-- -->
+          <li>
+            <span>{{ "COMPRAVENDITA_DIVISA" | translate}}: </span>
+            <span>{{ gestore.compravenditaDivisa && gestore.compravenditaDivisa == 1? ("SI" | translate) : ("NO" | translate)  }}</span>
+          </li>
+        </ul>
+        <hr>
+        <div class="note-gestore" *ngIf="gestore && gestore.noteGestore">
+          <h4>{{'NOTE_GESTORE' | translate}}</h4>
+          <div class="note" [innerHTML]="(gestore?.noteGestore ? (gestore.noteGestore | safeHtml) : '')"></div>
+        </div>
+      </div>
+
+
+      <!-- =-======================  card-t1 1 -->
+      <div class="dt-wrap card-t1">
+
+        <div class="state-import ">
+          <h3>{{ "STATO_IMPORTAZIONE_GESTORE" | translate }}</h3>
+        </div>
+
+        <div class="dash ">
+          <table>
+            <tr>
+              <th></th>
+              <th>{{ 'DT_IMPORTATA' | translate }}</th>
+              <th>{{ 'DT_IMPORTATA_DB' | translate }}</th>
+              <th>{{ 'DT_IMPORT_PREVISTA' | translate }}</th>
+              <th>{{ "OGGI" | translate}}</th>
+
+            </tr>
+
+            <tbody>
+
+            <!-- MM -->
+            <tr [ngClass]="isMMLimit">
+              <td>{{ "MESE" }}</td>
+              <td>{{ gestore?.dtImportMM? (gestore?.dtImportMM| date:'dd / MM') : '-' }}</td>
+              <td>{{gestore?.lastImportMM| date:'dd / MM'}}</td>
+              <td>{{ gestore?.dtArrivoFlussiMmD1 }} - {{ gestore?.dtArrivoFlussiMmD2 }}</td>
+              <td>{{ todayMM }}</td>
+            </tr>
+
+            <!-- SS -->
+            <tr [ngClass]="isSSOver"  *ngIf="gestore?.dtImportSS">
+              <td>{{ "SETTIMANA" }}</td>
+              <td>{{ gestore?.dtImportSS? (gestore?.dtImportSS| date:'dd / MM') : '-' }}</td>
+              <td></td>
+              <td>{{ gestore?.dtArrivoFlussiSs? gestore?.dtArrivoFlussiSs : '-' }}</td>
+              <td>{{ todaySS }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- =-======================  card-t1 1 -->
+      <div class="card-t1 chart" style="height: 100px">
+        <h3>{{ "GRAFICO_NUMERO_IMPORTAZIONI" | translate }}</h3>
+      </div>
+
+    </div>
+  </ng-container>
+
+
+  <ngx-spinner name="spinnerLoadDatiGestore" bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"
+               template="<img class='spinner' src='./assets/media/icon/loading_spinner.svg' style='width: 50%;'>">
+  </ngx-spinner>
 </section>

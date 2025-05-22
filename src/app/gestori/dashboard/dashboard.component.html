@@ -1,63 +1,45 @@
+
 <section class="general-dashboard">
-  <div class="head">
-    <span>{{ 'STATO_GESTORI' | translate }}</span>
+  <div class="header-component-wrap">
+    <app-header>
+      <div class="head">
+          <span>{{ 'STATO_GESTORI' | translate }}</span>
+      </div>
+    </app-header>
   </div>
+
 
   <div class="table-wrap" style="--width-table-input: 80%">
     <table class="card-t1 ">
       <thead>
       <tr>
-        <th><span>{{ 'GESTORI' | translate }}</span></th>
+        <th><span>{{ 'GESTORE' | translate }}</span></th>
         <th><span>{{ 'DT_TRACCIATO_MANUALE_SETT' | translate }}</span></th>
         <th><span>{{ 'DT_TRACCIATO_MANUALE_MENSILE' | translate }}</span></th>
         <th><span>{{ 'DT_TRACCIATO_CEDIS' | translate }}</span></th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-      </tr>
-      <tr>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-      </tr>
-      <tr>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-      </tr>
-      <tr>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-      </tr>
-      <tr>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-      </tr>
-      <tr>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-      </tr>
-      <tr>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-        <td><span>DATA</span></td>
-      </tr>
+        <ng-container *ngIf="(!this.gestori || this.gestori.length === 0) && !isSpinnerVisible">
+          <tr class="no-data-row">
+            <td colspan="4" style="text-align: center"><span>{{ 'DATI_ASSENTI_PROVA_A_RICARICARE_LA_PAGINA' | translate }}</span></td>
+          </tr>
+        </ng-container>
+
+        <tr *ngFor="let itm of gestori">
+          <td class="w-max" style="--w-max-param: 200px"><span>{{ itm.dsGestore }}</span></td>
+          <td><span>{{ itm.dtImportSS? (itm.dtImportSS| date:'dd / MM') : '-'}}</span></td>
+          <td><span>{{ itm.dtImportMM? (itm.dtImportMM| date:'dd / MM') : '-' }}</span></td>
+          <td><span>{{ itm.lastImportMM | date:'dd/MM' }}</span></td>
+        </tr>
+
+
+
       </tbody>
     </table>
   </div>
 
+  <ngx-spinner name="spinnerTableDashboardGestori" bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"
+               template="<img class='spinner' src='./assets/media/icon/loading_spinner.svg' style='width: 50%;'>">
+  </ngx-spinner>
 </section>

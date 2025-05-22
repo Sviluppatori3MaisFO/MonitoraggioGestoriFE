@@ -1,13 +1,32 @@
 <nav class="side-bar">
+
+  <img src="./assets/media/icon/mais_logo.svg" alt="">
   <ul>
     <li (click)="onGestore(null)"><span>{{ 'DASHBOARD_GENERALE_GESTORI' | translate }}</span></li>
     <li *ngFor="let itm of gestori"
         (click)="onGestore(itm.idGestore)">
-      <span>{{ (!itm.dsGestore || itm.dsGestore==''? '-' : itm.dsGestore) | lowercase }}</span>
+      <span>{{ (!itm.dsGestore || itm.dsGestore==''? '-' : itm.dsGestore) }}</span>
     </li>
   </ul>
 
-  <ul>
+  <ul class="user-wrap">
+    <!-- -->
+    <div class="side-popup" [ngClass]="{'open': openSettings}">
+      <div class="lang-wrap">
+        <div class="tit">{{"SELEZIONA_LA_LINGUA" | translate}} <b>{{currentLanguage}}</b></div>
+        <div class="langs">
+          <div class="lang"
+               *ngFor="let lang of langs"
+                [ngClass]="{'active': currentLanguage == lang}"
+                (click)="changeLang(lang)">
+            {{ lang }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- USERBANE -->
+    <li (click)="toggleSettings()">{{ username }}</li>
+
     <li class="logout-wrap"
         (click)="logout()">
       <span>{{ 'ESCI' | translate}}</span>

@@ -2,6 +2,7 @@
 $palette: (
   // Background neutrali
   white: #ffffff,
+  black: #000,
   gray-50: #fefefe,
   gray-100: #fdfdfd,
   gray-200: #f2f2f2,   // da input utente
@@ -35,10 +36,15 @@ $def-colors: (
   // Colori principali della dashboard
   primary: #3b82f6,
   success: #10b981,
-  warning: #f59e0b,
-  danger:  #ef4444,
+  //warning: #f59e0b,
+  //danger:  #ef4444,
+  //warning: rgba(245, 158, 11, 0.50),
+  //danger: rgba(239, 68, 68, 0.50),
+  danger: #f8d7da,
+  warning: #fff3cd,
   info:    #0ea5e9,
   white:   map-get($palette, white),
+  black:   map-get($palette, black),
 
   // Background principali
   background: map-get($palette, white),

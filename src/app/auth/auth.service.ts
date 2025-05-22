@@ -3,8 +3,7 @@ import {Subject} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 import {AccountInfo, EventMessage, EventType, InteractionStatus, RedirectRequest} from '@azure/msal-browser';
 import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
-import {SpinnerService} from '../shared/components/spinner/spinner.service';
-import {HttpClient} from '@angular/common/http';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 
 
@@ -22,7 +21,7 @@ export class AuthService implements OnInit, OnDestroy {
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
-    private spinnerService: SpinnerService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -39,10 +38,10 @@ export class AuthService implements OnInit, OnDestroy {
         this.setLoginDisplay();
 
         if (!this.loginDisplay) {
-          this.spinnerService.showTotalSpinner = true;
+          this.spinner.show();
           this.login();
         } else {
-          this.spinnerService.showTotalSpinner = false;
+          this.spinner.hide();
         }
 
         //user info

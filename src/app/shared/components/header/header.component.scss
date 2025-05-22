@@ -1,12 +1,6 @@
 .header-wrap {
   width: 100%;
   height: auto;
-  display: flex;
+  flex-grow: 1;
   align-items: center;
-  justify-content: space-between;
-
-  .user {
-    font-size: var(--typography-font-size-sm);
-    font-weight: var(--typography-font-weight-bold);
-  }
 }

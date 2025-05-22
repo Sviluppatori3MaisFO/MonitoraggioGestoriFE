@@ -1,13 +1,30 @@
 {
  "DASHBOARD_STATO_GESTORI" : "Dashboard stato dei gestori",
   "ESCI" : "Esci",
-  "DASHBOARD_GENERALE_GESTORI" : "Tutti i gestori",
+  "DASHBOARD_GENERALE_GESTORI" : "Riepilogo Gestori",
   "STATO_GESTORI" : "Monitoraggio Gestori",
   "DT_TRACCIATO_CEDIS" : "Tracciamento Cedis",
   "DT_TRACCIATO_MANUALE_MENSILE" : "Tracciamento Team Dati Mensile",
   "DT_TRACCIATO_MANUALE_SETT" : "Tracciamento Team Dati Sett.",
   "GESTORI" : "Gestori",
   "STATO_IMPORTAZIONE_GESTORE" : "Stato Importazione Gestore",
-  "DT_IMPORTATA" : "Dt. Importata",
-  "DT_IMPORT_PREVISTA" : "Dt. Arrivo Flussi"
+  "DT_IMPORTATA" : "Data Importata Dal Team Dati",
+  "DT_IMPORT_PREVISTA" : "Arrivo previsto Flussi",
+  "DT_IMPORTATA_DB" : "Data presente su cedis",
+  "DATI_ASSENTI_PROVA_A_RICARICARE_LA_PAGINA" : "Dati assenti, prova a ricaricare la pagina!",
+  "GRAFICO_NUMERO_IMPORTAZIONI" : "Numero importazioni",
+  "INFO_GESTORE" : "Informazioni gestore",
+  "COMPRAVENDITA_DIVISA" : "Compravendita divisa",
+  "SI" : "Si",
+  "NO" : "No",
+  "EMAIL_GESTORE_1" : "Email-1 del gestore",
+  "EMAIL_GESTORE_2" : "Email-2 del gestore",
+  "NOTE_GESTORE" : "Note gestore",
+  "GESTORE" : "Gestore",
+  "OGGI" : "Oggi",
+  "MESE" : "Mese",
+  "SETTIMANA" : "Settimana",
+  "SELEZIONA_LA_LINGUA" : "Seleziona la lingua:"
 }
+
+

@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {AuthService} from '../../../auth/auth.service';
 import {GestoriService} from '../../../services/gestori.service';
 import {IGestoreMonitorato} from '../../../services/models/gestori.model';
+import {LanguageService} from '../../services/language.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -12,11 +13,16 @@ import {IGestoreMonitorato} from '../../../services/models/gestori.model';
 })
 export class SideBarComponent implements OnInit {
 
+  public openSettings : boolean = false;
   public gestori: IGestoreMonitorato[] = [];
+  get username () {
+    return this.authService.account?.name;
+  }
 
   constructor(public router: Router,
               private gestoriService: GestoriService,
-              public authService: AuthService,) {
+              public authService: AuthService,
+              private langService: LanguageService) {
 
   }
 
@@ -41,5 +47,19 @@ export class SideBarComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  get langs() {
+    return this.langService.getSupportedLangs();
+  }
+  get currentLanguage() {
+    return this.langService.getCurrentLang()
+  }
+
+  toggleSettings() {
+    this.openSettings = !this.openSettings;
+  }
+  changeLang(lang: string) {
+    this.langService.useLang(lang)
   }
 }

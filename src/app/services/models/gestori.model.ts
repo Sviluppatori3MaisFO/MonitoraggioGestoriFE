@@ -16,9 +16,13 @@ export interface IGestoreMonitorato {
   noteGestore?: string;
   emailGestore1: string;
   emailGestore2?: string;
-  dtArrivoFlussiMm: Date;
-  dtArrivoFlussiSs?: Date;
+  dtArrivoFlussiMmD1: number;
+  dtArrivoFlussiMmD2: number;
+  dtArrivoFlussiSs?: number;
   fgMonitoring: number;
   dtCreazione: Date;
   dtLastEdit?: Date;
+  lastImportMM?: Date;
+  dtImportMM: Date;
+  dtImportSS: Date;
 }

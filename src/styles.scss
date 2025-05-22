@@ -12,3 +12,22 @@
   letter-spacing: 1.2px
 
 }
+
+
+
+// Spinner center
+.ngx-spinner-overlay[_ngcontent-ng-c2230211809] > div[_ngcontent-ng-c2230211809]:not(.loading-text) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-page-header {
+  height: auto;
+  border-bottom: 1px solid var(--color-header-border);
+  padding: 1rem 1rem 1rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: var(--disposizione-align-param, center);
+  justify-content: var(--disposizione-flex-param, space-between);
+}

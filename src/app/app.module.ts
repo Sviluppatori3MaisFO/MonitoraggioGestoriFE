@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 
 // Required for Angular
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 // Required modules and components for this application
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +20,8 @@ import {environment} from '../environments/environment';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { SharedModule} from './shared/shared.module';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {TotalSpinnerComponent} from './shared/components/spinner/total-spinner/total-spinner.component';
+import {NgxSpinnerModule} from 'ngx-spinner';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 // msal
@@ -76,6 +77,8 @@ export function httpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     MsalModule,
     SharedModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -84,6 +87,7 @@ export function httpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -106,6 +110,6 @@ export function httpLoaderFactory(http: HttpClient) {
     MsalGuard,
     MsalBroadcastService
   ],
-  bootstrap: [AppComponent, MsalRedirectComponent, TotalSpinnerComponent]
+  bootstrap: [AppComponent, MsalRedirectComponent]
 })
 export class AppModule { }
