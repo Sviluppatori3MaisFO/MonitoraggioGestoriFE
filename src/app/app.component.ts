@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
     private langService: LanguageService,
   ) {
     this.authService.init()
+    this.langService.init()
   }
 
   ngOnInit(): void {

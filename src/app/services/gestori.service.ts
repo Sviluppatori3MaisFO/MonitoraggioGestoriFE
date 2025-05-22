@@ -22,4 +22,9 @@ export class GestoriService {
   public getAnGestoriMonitorati (): Observable<IGestoreMonitorato[]> {
     return this.http.get<IGestoreMonitorato[]>(`${this.apiUrl}/getAnGestoriMonitorati`);
   }
+
+  // get gestore monitorato by id gestore
+  public getGestoreMonitoratoByIdGestore (idGestore: number): Observable<IGestoreMonitorato> {
+    return this.http.get<IGestoreMonitorato>(`${this.apiUrl}/getGestoreMonitoratoByIdGestore/${idGestore}`);
+  }
 }

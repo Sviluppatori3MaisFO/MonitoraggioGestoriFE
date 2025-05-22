@@ -9,8 +9,12 @@ export class LanguageService {
   private supportedLangs = ['en', 'it'];
 
   constructor(private translate: TranslateService) {
+  }
+
+  init() {
     this.translate.addLangs(this.supportedLangs);
     this.translate.setDefaultLang('it');
+
   }
 
   useLang(lang: string | null) {
