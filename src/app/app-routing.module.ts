@@ -1,19 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {AuthComponent} from './auth/auth/auth.component';
 
 const routes: Routes = [
+  {
+    path: 'auth',
+    component: AuthComponent
+  },
   {
     path: 'gestori',
     loadChildren: () => import('./gestori/gestori.module').then(m => m.GestoriModule)
   },
   {
     path: '',
-    redirectTo: 'gestori/dashboard',
+    redirectTo: 'auth',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'gestori/dashboard'
+    redirectTo: 'auth'
   }
 ];
 

@@ -147,3 +147,68 @@ h3 {
   position: relative;
   transition: .15s ease-in;
 }
+
+
+/*
+
+===================== FORM
+
+*/
+.form-control {
+  padding: 0.7rem 0.5rem;
+
+  &.text {
+    display: flex;
+    flex-direction: column;
+  }
+  &.select-days {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      padding: 12px 0;
+      font-weight: var(--typography-font-weight-bold);
+      text-align: center;
+    }
+
+    .days {
+      display: grid;
+      grid-template-columns: repeat(7, fit-content(150px));
+      gap: 8px;
+      justify-content: center;
+
+      .day {
+        border-radius: 100%;
+        border: 0.5px solid #000;
+        padding: 0.1rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &:hover,
+        &.active{
+          background-color: var(--color-info);
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+
+  label {
+    font-size: var(--typography-font-size-sm);
+    font-weight: var(--typography-font-weight-bold);
+    margin-bottom: 6px;
+  }
+
+  input[type="text"] {
+    min-width: 100px;
+    width: var(--w-param, auto);
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000;
+    margin-left: 10px;
+  }
+}

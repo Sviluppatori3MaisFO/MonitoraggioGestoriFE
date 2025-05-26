@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 
 // Required for Angular
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 // Required modules and components for this application
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,7 @@ import { SharedModule} from './shared/shared.module';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AuthComponent } from './auth/auth/auth.component';
 
 
 // msal
@@ -70,6 +71,7 @@ export function httpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

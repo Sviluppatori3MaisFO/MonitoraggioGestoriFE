@@ -4,6 +4,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 import {AccountInfo, EventMessage, EventType, InteractionStatus, RedirectRequest} from '@azure/msal-browser';
 import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {resolve} from '@angular/compiler-cli';
 
 
 
@@ -22,7 +23,9 @@ export class AuthService implements OnInit, OnDestroy {
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
     private spinner: NgxSpinnerService
-  ) { }
+  ) {
+
+  }
 
   ngOnInit(): void {
 
@@ -46,6 +49,7 @@ export class AuthService implements OnInit, OnDestroy {
 
         //user info
         this.getUserInfoFromIdToken()
+
       });
 
     // Used for storing and displaying token expiration

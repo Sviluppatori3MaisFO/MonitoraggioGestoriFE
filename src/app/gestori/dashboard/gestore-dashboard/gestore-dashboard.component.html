@@ -5,9 +5,13 @@
         <div class="gestore-name">{{ gestore?.dsGestore }}</div>
         <div class="operations">
           <button class="btn-img new-gestore">
-            <img src="./assets/media/icon/plus.svg" alt="">
+            <img src="./assets/media/icon/upload.svg" alt="">
           </button>
-          <button class="btn-img settings-gestore">
+          <button class="btn-img new-gestore"
+            (click)="reloadData()">
+            <img src="./assets/media/icon/reload.svg" alt="">
+          </button>
+          <button class="btn-img settings-gestore" (click)="onEdit()">
             <img src="./assets/media/icon/gear.svg" alt="">
           </button>
         </div>
@@ -16,18 +20,16 @@
 
     <!-- ============================================================================================================================== CENTER -->
     <div class="center">
-      <!-- ========================= card-t1 2 -->
+      <!-- =-===========================================  Info gestore -->
       <div class="card-t1 info-gestore-card">
         <h3>{{ "INFO_GESTORE" | translate}}</h3>
 
         <ul >
-          <li>
-            <span>{{ 'EMAIL_GESTORE_1' | translate}}:</span>
-            <span>{{gestore.emailGestore1}}</span>
-          </li>
-          <li *ngIf="gestore?.emailGestore2">
-            <span>{{ 'EMAIL_GESTORE_2' | translate}}: </span>
-            <span>{{gestore.emailGestore2}}</span>
+          <li class="email-wrap" [ngStyle]="{'grid-template-rows': gestore.emailGestore2? '1fr 1fr' : '1fr'}">
+            <div>{{ 'EMAIL_DEL_GESTORE' | translate }}: </div>
+            <div>{{gestore.emailGestore1}}</div>
+            <div></div>
+            <div>{{gestore.emailGestore2}}</div>
           </li>
           <!-- -->
           <li>
@@ -42,14 +44,11 @@
         </div>
       </div>
 
-
-      <!-- =-======================  card-t1 1 -->
+      <!-- =-===========================================  Stato importazione -->
       <div class="dt-wrap card-t1">
-
         <div class="state-import ">
           <h3>{{ "STATO_IMPORTAZIONE_GESTORE" | translate }}</h3>
         </div>
-
         <div class="dash ">
           <table>
             <tr>
@@ -65,7 +64,7 @@
 
             <!-- MM -->
             <tr [ngClass]="isMMLimit">
-              <td>{{ "MESE" }}</td>
+              <td>{{ "MESE" | translate }}</td>
               <td>{{ gestore?.dtImportMM? (gestore?.dtImportMM| date:'dd / MM') : '-' }}</td>
               <td>{{gestore?.lastImportMM| date:'dd / MM'}}</td>
               <td>{{ gestore?.dtArrivoFlussiMmD1 }} - {{ gestore?.dtArrivoFlussiMmD2 }}</td>
@@ -74,27 +73,34 @@
 
             <!-- SS -->
             <tr [ngClass]="isSSOver"  *ngIf="gestore?.dtImportSS">
-              <td>{{ "SETTIMANA" }}</td>
+              <td>{{ "SETTIMANA" | translate }}</td>
               <td>{{ gestore?.dtImportSS? (gestore?.dtImportSS| date:'dd / MM') : '-' }}</td>
               <td></td>
-              <td>{{ gestore?.dtArrivoFlussiSs? gestore?.dtArrivoFlussiSs : '-' }}</td>
-              <td>{{ todaySS }}</td>
+              <td>{{ gestore?.dtArrivoFlussiSs? (getDay(gestore?.dtArrivoFlussiSs ) | translate): '-' }}</td>
+              <td>{{ (todaySS | translate | lowercase) }}</td>
             </tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- =-======================  card-t1 1 -->
-      <div class="card-t1 chart" style="height: 100px">
+      <!-- =-===========================================  Charts -->
+      <div class="card-t1 chart-wrapper">
         <h3>{{ "GRAFICO_NUMERO_IMPORTAZIONI" | translate }}</h3>
+
+        <div class="chart-wrap">
+          <ng-container *ngIf="movimentiChart && movimentiChart.length > 0">
+            <div echarts [options]="chartOpt"></div>
+          </ng-container>
+        </div>
       </div>
 
     </div>
   </ng-container>
 
 
-  <ngx-spinner name="spinnerLoadDatiGestore" bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"
+  <!--<ngx-spinner name="spinnerLoadDatiGestore" bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"
                template="<img class='spinner' src='./assets/media/icon/loading_spinner.svg' style='width: 50%;'>">
-  </ngx-spinner>
+  </ngx-spinner>-->
+  <app-spinner name="spinnerLoadDatiGestore"></app-spinner>
 </section>

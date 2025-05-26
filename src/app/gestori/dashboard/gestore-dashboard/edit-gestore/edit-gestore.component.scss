@@ -1,0 +1,29 @@
+section.edit-gestore-wrap {
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  .head {
+    .operations {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+
+  .body {
+
+    .month-select {
+      display: flex;
+      gap: 32px;
+      padding: 0 10px;
+
+      .values-calendar-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0 8px 0;
+      }
+    }
+  }
+}

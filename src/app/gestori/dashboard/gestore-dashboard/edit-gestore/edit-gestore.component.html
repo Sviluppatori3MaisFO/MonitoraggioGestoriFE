@@ -1,0 +1,81 @@
+<section class="edit-gestore-wrap">
+
+  <ng-container *ngIf="gestore">
+    <!-- HEADER -->
+    <div class="my-page-header head">
+      <div class="gestore-name">{{ gestore?.dsGestore }}</div>
+      <div class="operations">
+        <button class="btn-img settings-gestore" (click)="save()">
+          <img src="./assets/media/icon/save.svg" alt="">
+        </button>
+        <button class="btn-img settings-gestore">
+          <img src="./assets/media/icon/close.svg" alt="" (click)="closeEdit()">
+        </button>
+      </div>
+    </div>
+
+
+    <!-- ================================================== BODY -->
+    <div class="body">
+      <!-- COMPRAVENDITA DIVISA -->
+      <div class="form-control radio">
+        <input type="radio" name="cdivisa" id="" value="1" [(ngModel)]="gestore.compravenditaDivisa">si
+        <input type="radio" name="cdivisa" id="" value="0" [(ngModel)]="gestore.compravenditaDivisa">no
+      </div>
+
+      <!--EMAIL GESTORE 1-->
+      <div class="form-control text">
+        <label for="emailgestore1">Email-1 del gestore</label>
+        <input type="text" name="emailgestore1" id="emailgestore1" [(ngModel)]="gestore.emailGestore1" style="--w-param: 250px;">
+      </div>
+      <!--EMAIL GESTORE 2-->
+      <div class="form-control text">
+        <label for="emailgestore2">Email-2 del gestore</label>
+        <input type="text" name="emailgestore2" id="emailgestore2" [(ngModel)]="gestore.emailGestore2" style="--w-param: 250px;">
+      </div>
+
+      <!-- DATA PREVISTA ARRIVO FLUSSI MM D1-->
+      <div class="month-select">
+        <div class="form-control select-days card-t1">
+          <div class="title">{{'SELEZIONA_GIORNI_MENSILI' | translate}}</div>
+          <div class="values-calendar-wrap">{{'DAL' | translate }} {{gestore.dtArrivoFlussiMmD1}} {{'AL' | translate}} {{gestore.dtArrivoFlussiMmD2}}</div>
+          <div class="days">
+            <div class="day" *ngFor="let n of days"
+                  [ngClass]="{'active': n == gestore.dtArrivoFlussiMmD1||n == gestore.dtArrivoFlussiMmD2}"
+                  (click)="onDay(n)">{{n}}</div>
+          </div>
+        </div>
+
+        <div class="form-control select-days card-t1">
+          <div class="title">{{'SELEZIONA_GIORNO_SETTIMANALE' | translate}}</div>
+          <div class="values-calendar-wrap">{{gestore.dtArrivoFlussiSs}}</div>
+          <div class="days">
+            <div class="day" *ngFor="let n of daysWeek"
+                 [ngClass]="{'active': n == gestore.dtArrivoFlussiSs}"
+                  (click)="onDayWeek(n)">{{n}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA PREVISTA ARRIVO FLUSSI MM D2-->
+
+      <!-- DATA PREVISTA ARRIVO FLUSSI SS-->
+
+      <!-- NOTE GESTORE -->
+      <div class="form-control">
+        <div class="title">{{"NOTE_GESTORE" | translate}}</div>
+        <div class="editor">
+          <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+          </ngx-editor-menu>
+          <ngx-editor [editor]="editor" [(ngModel)]="gestore.noteGestore">
+          </ngx-editor>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+
+  <ngx-spinner name="spinnerLoadDatiGestore" bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"
+               template="<img class='spinner' src='./assets/media/icon/loading_spinner.svg' style='width: 50%;'>">
+  </ngx-spinner>
+</section>

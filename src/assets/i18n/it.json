@@ -24,7 +24,19 @@
   "OGGI" : "Oggi",
   "MESE" : "Mese",
   "SETTIMANA" : "Settimana",
-  "SELEZIONA_LA_LINGUA" : "Seleziona la lingua:"
+  "SELEZIONA_LA_LINGUA" : "Seleziona la lingua:",
+  "LUNEDI": "Lunedì",
+  "MARTEDI": "Martedì",
+  "MERCOLEDI": "Mercoledì",
+  "GIOVEDI": "Giovedì",
+  "VENERDI": "Venerdì",
+  "SABATO": "Sabato",
+  "DOMENICA": "Domenica",
+  "EMAIL_DEL_GESTORE" : "Email del gestore",
+  "SELEZIONA_GIORNI_MENSILI" : "Seleziona quando arrivano i flussi mensili",
+  "SELEZIONA_GIORNO_SETTIMANALE" : "Seleziona il giorno della settimana in cui arrivano i flussi settimanali",
+  "DAL" : "Dal",
+  "AL" : "al"
 }
 
 

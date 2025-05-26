@@ -7,12 +7,17 @@ import { GestoreDashboardComponent } from './dashboard/gestore-dashboard/gestore
 import { ImportFlussiComponent } from './dashboard/gestore-dashboard/import-flussi/import-flussi.component';
 import {NgxSpinnerComponent} from 'ngx-spinner';
 import {SharedModule} from '../shared/shared.module';
+import {NgxEchartsDirective} from 'ngx-echarts';
+import { EditGestoreComponent } from './dashboard/gestore-dashboard/edit-gestore/edit-gestore.component';
+import {QuillModule} from 'ngx-quill';
+import {NgxEditorModule} from 'ngx-editor';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     GestoreDashboardComponent,
-    ImportFlussiComponent
+    ImportFlussiComponent,
+    EditGestoreComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +25,8 @@ import {SharedModule} from '../shared/shared.module';
     TranslateModule,
     NgxSpinnerComponent,
     SharedModule,
+    NgxEchartsDirective,
+    NgxEditorModule
   ]
 })
 export class GestoriModule {}

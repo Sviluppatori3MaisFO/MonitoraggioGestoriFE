@@ -40,4 +40,17 @@ export class DashboardComponent implements OnInit{
     const spinnerRef = await this.spinner.getSpinner('spinnerTableDashboardGestori').toPromise();
     return !!spinnerRef?.show;
   }
+
+  public dateCompare(date_mm?: Date, date_cedis?: Date): boolean {
+    if (!date_mm || !date_cedis) return false;
+    console.log(date_mm, date_cedis);
+
+    const d1 = new Date(date_mm);
+    const d2 = new Date(date_cedis);
+
+    //return d1.getDate() === d2.getDate() && d1.getMonth() === d2.getMonth();
+    return d1.getMonth() === d2.getMonth();
+  }
+
+
 }

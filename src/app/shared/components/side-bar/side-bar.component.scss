@@ -53,6 +53,7 @@
       background-color: var(--color-sidebar-bg);
       position: absolute;
       left: calc(100% + 10px);
+      top: 25%;
       transform: translateY(-50%);
       overflow: hidden;
       transition: width 0.2s;

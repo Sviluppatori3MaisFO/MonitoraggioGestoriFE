@@ -1,11 +1,9 @@
 
 <section class="general-dashboard">
-  <div class="header-component-wrap">
-    <app-header>
+  <div class="my-page-header head">
       <div class="head">
           <span>{{ 'STATO_GESTORI' | translate }}</span>
       </div>
-    </app-header>
   </div>
 
 
@@ -26,7 +24,8 @@
           </tr>
         </ng-container>
 
-        <tr *ngFor="let itm of gestori">
+        <tr *ngFor="let itm of gestori"
+            [ngClass]="{'danger-row': !dateCompare(itm.dtImportMM,itm?.lastImportMM)}">
           <td class="w-max" style="--w-max-param: 200px"><span>{{ itm.dsGestore }}</span></td>
           <td><span>{{ itm.dtImportSS? (itm.dtImportSS| date:'dd / MM') : '-'}}</span></td>
           <td><span>{{ itm.dtImportMM? (itm.dtImportMM| date:'dd / MM') : '-' }}</span></td>
@@ -39,7 +38,9 @@
     </table>
   </div>
 
-  <ngx-spinner name="spinnerTableDashboardGestori" bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"
+  <!--<ngx-spinner name="spinnerTableDashboardGestori" bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"
                template="<img class='spinner' src='./assets/media/icon/loading_spinner.svg' style='width: 50%;'>">
-  </ngx-spinner>
+  </ngx-spinner>-->
+
+  <app-spinner name="spinnerTableDashboardGestori"></app-spinner>
 </section>

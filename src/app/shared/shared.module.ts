@@ -4,24 +4,37 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HeaderComponent } from './components/header/header.component';
 import {SafeHtmlPipe} from './pipes/safe-html.pipe';
+import {NgxEchartsModule} from 'ngx-echarts';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SpinnerComponent } from './components/ngx-spinner/spinner.component';
+import {NgxSpinnerComponent} from 'ngx-spinner';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
-
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
+    FormsModule,
+    ReactiveFormsModule,
+    NgxSpinnerComponent,
   ],
   exports: [
     CommonModule,
     TranslateModule,
     SideBarComponent,
     HeaderComponent,
-    SafeHtmlPipe
+    SpinnerComponent,
+    SafeHtmlPipe,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     SideBarComponent,
     HeaderComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    SpinnerComponent,
   ],
   providers: [DatePipe]
 })

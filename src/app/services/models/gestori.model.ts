@@ -26,3 +26,9 @@ export interface IGestoreMonitorato {
   dtImportMM: Date;
   dtImportSS: Date;
 }
+export interface IGestoreImportazioneMovimentiChart {
+  idGestore: number;
+  dtImportazione: Date;
+  valueDefinitivi:number;
+  valueSettimanali:number;
+}

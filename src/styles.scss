@@ -31,3 +31,7 @@
   align-items: var(--disposizione-align-param, center);
   justify-content: var(--disposizione-flex-param, space-between);
 }
+
+button {
+  outline: none;
+}

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {GestoriService} from '../../../services/gestori.service';
-import {ActivatedRoute} from '@angular/router';
-import {IGestoreMonitorato} from '../../../services/models/gestori.model';
+import {ActivatedRoute, Router} from '@angular/router';
+import {IGestoreImportazioneMovimentiChart, IGestoreMonitorato} from '../../../services/models/gestori.model';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {EChartsOption} from 'echarts';
 
 @Component({
   selector: 'app-gestore-dashboard',
@@ -12,12 +13,39 @@ import {NgxSpinnerService} from 'ngx-spinner';
 })
 export class GestoreDashboardComponent implements OnInit {
 
+  chartOpt: EChartsOption = {
+
+    legend: {},
+    tooltip: {
+      trigger: 'axis'
+    },
+    xAxis: {
+      data: [],
+    },
+    yAxis: {},
+    series: [
+      {
+        name: 'Count',
+        type: 'line',
+        data: [],
+      },
+      {
+        name: 'Count',
+        type: 'line',
+        data: [],
+      },
+    ],
+  };
+
+  public days: string[] = ['DOMENICA', 'LUNEDÌ', 'MARTEDÌ', 'MERCOLEDÌ', 'GIOVEDÌ', 'VENERDÌ', 'SABATO']
   private idGestore: number = 0;
   public gestore: IGestoreMonitorato | null = null;
+  public movimentiChart: IGestoreImportazioneMovimentiChart[] | null = null;
 
   constructor(private aRoute: ActivatedRoute,
               private gestoriService: GestoriService,
-              private spinner: NgxSpinnerService) { }
+              private spinner: NgxSpinnerService,
+              private router: Router,) { }
 
   ngOnInit() {
     this.aRoute.paramMap.subscribe(params => {
@@ -25,6 +53,7 @@ export class GestoreDashboardComponent implements OnInit {
       if (id !== null) {
         this.idGestore = +id;
         this.getGestoreMonitorato(this.idGestore);
+        this.getQuantitaGestoriChart(this.idGestore);
       }
     });
   }
@@ -44,7 +73,53 @@ export class GestoreDashboardComponent implements OnInit {
       }
     })
   }
+  private getQuantitaGestoriChart (idGestore: number) {
 
+    this.spinner.show('spinnerLoadDatiGestore');
+    this.gestore = null;
+    this.gestoriService.getQuantitaGestoriChart(idGestore).subscribe({
+      next: res => {
+        this.movimentiChart = res;
+        this.initChartData();
+        this.spinner.hide('spinnerLoadDatiGestore');
+      },
+      error: err => {
+        console.error(err);
+        this.spinner.hide('spinnerLoadDatiGestore');
+      }
+    })
+  }
+  private initChartData() {
+    if(!this.movimentiChart) return
+
+    this.chartOpt.xAxis = {
+      type: 'category',
+      data: this.movimentiChart.map(itm => {
+        const rawDate = itm.dtImportazione || itm.dtImportazione;
+        const parsedDate = new Date(rawDate);
+        return isNaN(parsedDate.getTime())
+          ? 'Data non valida'
+          : parsedDate.toLocaleDateString('it-IT');
+      }),
+    };
+
+    this.chartOpt.series = [
+      {
+        type: 'line',
+        data: this.movimentiChart.map(itm => itm.valueSettimanali),
+      },
+      {
+        type: 'line',
+        data: this.movimentiChart.map(itm => itm.valueDefinitivi),
+      },
+    ];
+
+  }
+
+  public reloadData() {
+    this.getGestoreMonitorato(this.idGestore);
+    this.getQuantitaGestoriChart(this.idGestore);
+  }
 
   // Limite arrivo gestori mensile
   get isMMLimit() {
@@ -72,6 +147,14 @@ export class GestoreDashboardComponent implements OnInit {
     else return ''
   }
   get todaySS() {
-    return new Date().getDay();
+    return this.days[new Date().getDay()] ?? '-';
+
+  }
+  getDay (day?: number) {
+    if(!day) return '-';
+    return this.days[day-1]
+  }
+  onEdit() {
+    this.router.navigate(['/gestori/dashboard', this.idGestore, 'edit']);
   }
 }
