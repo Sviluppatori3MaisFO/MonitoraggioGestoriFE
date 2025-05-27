@@ -13,12 +13,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'gestori',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'auth'
+    redirectTo: 'gestori'
   }
 ];
 

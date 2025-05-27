@@ -123,6 +123,32 @@
         }
       }
     }
+
+    .movimenti-sospeso {
+      --width-table-input: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 300px;
+
+      .legends {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        gap: 16px;
+        list-style: none;
+
+        li {
+          font-size: var(--typography-font-size-sm);
+          span {
+            font-weight: var(--typography-font-weight-bold);
+          }
+        }
+      }
+    }
   }
 
 }

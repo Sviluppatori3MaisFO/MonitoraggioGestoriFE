@@ -12,7 +12,7 @@
   "DT_IMPORT_PREVISTA" : "Arrivo previsto Flussi",
   "DT_IMPORTATA_DB" : "Data presente su cedis",
   "DATI_ASSENTI_PROVA_A_RICARICARE_LA_PAGINA" : "Dati assenti, prova a ricaricare la pagina!",
-  "GRAFICO_NUMERO_IMPORTAZIONI" : "Numero importazioni",
+  "GRAFICO_NUMERO_IMPORTAZIONI" : "Andamento importazioni negli ultimi 6 mesi",
   "INFO_GESTORE" : "Informazioni gestore",
   "COMPRAVENDITA_DIVISA" : "Compravendita divisa",
   "SI" : "Si",
@@ -36,7 +36,17 @@
   "SELEZIONA_GIORNI_MENSILI" : "Seleziona quando arrivano i flussi mensili",
   "SELEZIONA_GIORNO_SETTIMANALE" : "Seleziona il giorno della settimana in cui arrivano i flussi settimanali",
   "DAL" : "Dal",
-  "AL" : "al"
+  "AL" : "al",
+  "MOVIMENTI_IN_IMPORTAZIONE" : "Movimenti in importazione",
+  "NORMALIZZATO_MERGIATO" : "Normalizzato e mergiato",
+  "DA_VALIDARE_PER_NORM" : "Da validarte per normalizzazione",
+  "VALIDARE_PER_CONTABILITA" : "Da validare per contabilita'",
+  "MOVIMENTI_SETTIMANALI" : "Movimenti settimanali",
+  "MOVIMENTI_MENSILI" : "Movimenti mensili",
+  "DATE" : "Data",
+  "STATO" : "Stato",
+  "TIPO_OPERAZIONE" : "Tipo Operazione",
+  "DATA_OPERAZIONE" : "Data Operazione"
 }
 
 

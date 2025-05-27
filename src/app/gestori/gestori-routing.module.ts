@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MsalGuard } from '@azure/msal-angular';
 import {GestoreDashboardComponent} from './dashboard/gestore-dashboard/gestore-dashboard.component';
 import {EditGestoreComponent} from './dashboard/gestore-dashboard/edit-gestore/edit-gestore.component';
+import {ImportFlussiComponent} from './dashboard/gestore-dashboard/import-flussi/import-flussi.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,16 @@ const routes: Routes = [
     component: EditGestoreComponent,
     canActivate: [MsalGuard]
   },
+  {
+    path: 'dashboard/:id_gestore/importflussi',
+    component: ImportFlussiComponent,
+    canActivate: [MsalGuard]
+  },
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

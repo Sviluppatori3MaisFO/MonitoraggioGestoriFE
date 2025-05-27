@@ -107,8 +107,8 @@
             "styles": [
               "src/styles.scss",
               "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
-              "node_modules/ngx-editor/__style__/ngx-editor.css"
-
+              "node_modules/ngx-editor/__style__/ngx-editor.css",
+              "./node_modules/ngx-ui-switch/ui-switch.component.css"
             ],
             "scripts": []
           }

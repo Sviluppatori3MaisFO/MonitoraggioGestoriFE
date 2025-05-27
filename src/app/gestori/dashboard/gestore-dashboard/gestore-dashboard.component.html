@@ -2,9 +2,10 @@
   <ng-container *ngIf="gestore">
   <!--============================================================================================================================== header -->
     <div class="my-page-header head">
-        <div class="gestore-name">{{ gestore?.dsGestore }}</div>
+        <div class="gestore-name">{{ gestore.dsGestore }}</div>
         <div class="operations">
-          <button class="btn-img new-gestore">
+          <button class="btn-img new-gestore"
+                  [routerLink]="['importflussi']">
             <img src="./assets/media/icon/upload.svg" alt="">
           </button>
           <button class="btn-img new-gestore"
@@ -40,7 +41,7 @@
         <hr>
         <div class="note-gestore" *ngIf="gestore && gestore.noteGestore">
           <h4>{{'NOTE_GESTORE' | translate}}</h4>
-          <div class="note" [innerHTML]="(gestore?.noteGestore ? (gestore.noteGestore | safeHtml) : '')"></div>
+          <div class="note" [innerHTML]="(gestore.noteGestore ? (gestore.noteGestore | safeHtml) : '')"></div>
         </div>
       </div>
 
@@ -65,18 +66,18 @@
             <!-- MM -->
             <tr [ngClass]="isMMLimit">
               <td>{{ "MESE" | translate }}</td>
-              <td>{{ gestore?.dtImportMM? (gestore?.dtImportMM| date:'dd / MM') : '-' }}</td>
-              <td>{{gestore?.lastImportMM| date:'dd / MM'}}</td>
-              <td>{{ gestore?.dtArrivoFlussiMmD1 }} - {{ gestore?.dtArrivoFlussiMmD2 }}</td>
+              <td>{{ gestore.dtImportMM| date:'dd / MM' }}</td>
+              <td>{{ gestore.lastImportMM| date:'dd / MM'}}</td>
+              <td>{{ gestore && gestore.dtArrivoFlussiMmD1 ? gestore.dtArrivoFlussiMmD1:'-' }} - {{ gestore && gestore.dtArrivoFlussiMmD2 ? gestore.dtArrivoFlussiMmD2:'-' }}</td>
               <td>{{ todayMM }}</td>
             </tr>
 
             <!-- SS -->
             <tr [ngClass]="isSSOver"  *ngIf="gestore?.dtImportSS">
               <td>{{ "SETTIMANA" | translate }}</td>
-              <td>{{ gestore?.dtImportSS? (gestore?.dtImportSS| date:'dd / MM') : '-' }}</td>
+              <td>{{ gestore && gestore.dtImportSS? (gestore.dtImportSS| date:'dd / MM') : '-' }}</td>
               <td></td>
-              <td>{{ gestore?.dtArrivoFlussiSs? (getDay(gestore?.dtArrivoFlussiSs ) | translate): '-' }}</td>
+              <td>{{ gestore && gestore.dtArrivoFlussiSs? (getDay(gestore.dtArrivoFlussiSs ) | translate): '-' }}</td>
               <td>{{ (todaySS | translate | lowercase) }}</td>
             </tr>
             </tbody>
@@ -95,6 +96,34 @@
         </div>
       </div>
 
+
+      <div class="movimenti-sospeso card-t1">
+        <h3>{{'MOVIMENTI_IN_IMPORTAZIONE' | translate}}</h3>
+        <ul class="legends">
+          <li><span>NM</span> - {{ 'NORMALIZZATO_MERGIATO' | translate}}</li>
+          <li><span>VN</span> - {{ 'DA_VALIDARE_PER_NORM' | translate}}</li>
+          <li><span>VC</span> - {{ 'VALIDARE_PER_CONTABILITA' | translate}}</li>
+        </ul>
+
+        <div class="table-wrap maxh ">
+          <table class="">
+            <thead>
+              <tr>
+                <th><span>{{'STATO' | translate}}</span></th>
+                <th><span>{{'TIPO_OPERAZIONE' | translate}}</span></th>
+                <th><span>{{'DATA_OPERAZIONE' | translate}}</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let itm of gestore?.movimentiBloccati">
+                <td><span>{{ itm.stato }}</span></td>
+                <td><span>{{ itm.tipoOperazione }}</span></td>
+                <td><span>{{ itm.dtOperazione | date:'dd/MM/YYYY' }}</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </ng-container>
 

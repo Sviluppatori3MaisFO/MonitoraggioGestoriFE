@@ -1,0 +1,24 @@
+.switch-wrap {
+  max-width: fit-content;
+  border: 1px solid var(--color-border-color);
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: fit-content(50px) fit-content(50px);
+  justify-items: center;
+
+  .lb1,
+  .lb2 {
+    padding: 8px 12px;
+    cursor: pointer;
+
+    &.active {
+      background-color: var(--color-active);
+    }
+  }
+  .lb1 {
+    border-right: 0.5px solid var(--color-border-color);
+  }
+  .lb2 {
+    border-left: 0.5px solid var(--color-border-color);
+  }
+}

@@ -15,6 +15,7 @@ section.edit-gestore-wrap {
 
     .month-select {
       display: flex;
+      flex-wrap: wrap;
       gap: 32px;
       padding: 0 10px;
 
@@ -24,6 +25,10 @@ section.edit-gestore-wrap {
         justify-content: center;
         padding: 0 0 8px 0;
       }
+    }
+
+    .editor {
+      height: 200px;
     }
   }
 }

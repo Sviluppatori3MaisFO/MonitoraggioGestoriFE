@@ -7,10 +7,25 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  position: relative;
+  border-radius: 12px;
+
+  &.maxh {
+    max-height: 200px;
+    overflow: auto;
+
+    thead th {
+      position: sticky;
+      top: 0;
+
+    }
+  }
 
   table {
+    position: relative;
     border-collapse: collapse;
     width: var(--width-table-input, 100%);
+    border-radius: 12px;
 
     th,td {
       padding: 6px 8px;
@@ -22,6 +37,7 @@
 
       tr {
         th {
+          background-color: var(--color-table-header-bg);
 
           span {
             font-weight: var(--typography-font-weight-bold);

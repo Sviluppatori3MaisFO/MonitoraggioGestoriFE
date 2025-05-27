@@ -2,9 +2,11 @@
 
   <img src="./assets/media/icon/mais_logo.svg" alt="">
   <ul>
-    <li (click)="onGestore(null)"><span>{{ 'DASHBOARD_GENERALE_GESTORI' | translate }}</span></li>
+    <li (click)="onGestore(null)"
+        [ngClass]="{'active': null == activeGestore}"><span>{{ 'DASHBOARD_GENERALE_GESTORI' | translate }}</span></li>
     <li *ngFor="let itm of gestori"
-        (click)="onGestore(itm.idGestore)">
+        (click)="onGestore(itm.idGestore)"
+        [ngClass]="{'active': itm.idGestore == activeGestore}">
       <span>{{ (!itm.dsGestore || itm.dsGestore==''? '-' : itm.dsGestore) }}</span>
     </li>
   </ul>

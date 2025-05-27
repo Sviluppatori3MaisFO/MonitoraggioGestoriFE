@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {IAnGestore, IGestoreImportazioneMovimentiChart, IGestoreMonitorato} from './models/gestori.model';
+import {
+  IGestoreImportazioneMovimentiChart,
+  IGestoreMonitorato, IGestoreUltimoImportazione,
+  IMovimentiNormalizzati
+} from './models/gestori.model';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -31,4 +35,13 @@ export class GestoriService {
   public editGestoreMonitorato (model: IGestoreMonitorato): Observable<boolean> {
     return this.http.post<boolean>(`${this.apiUrl}/editGestoreMonitorato`, model);
   }
+
+  public getUltimaImportazione (idGestore: number) :Observable<IGestoreUltimoImportazione> {
+    return this.http.get<IGestoreUltimoImportazione>(`${this.apiUrl}/getUltimaImportazione/${idGestore}`);
+  }
+
+  public addNewImportazione (model: IGestoreUltimoImportazione): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/addNewImportazione`, model);
+  }
+
 }

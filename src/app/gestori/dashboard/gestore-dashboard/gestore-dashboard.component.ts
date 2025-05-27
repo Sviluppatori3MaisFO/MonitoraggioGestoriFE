@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {IGestoreImportazioneMovimentiChart, IGestoreMonitorato} from '../../../services/models/gestori.model';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {EChartsOption} from 'echarts';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-gestore-dashboard',
@@ -15,7 +16,9 @@ export class GestoreDashboardComponent implements OnInit {
 
   chartOpt: EChartsOption = {
 
-    legend: {},
+    legend: {
+      itemGap: 30,
+    },
     tooltip: {
       trigger: 'axis'
     },
@@ -45,7 +48,8 @@ export class GestoreDashboardComponent implements OnInit {
   constructor(private aRoute: ActivatedRoute,
               private gestoriService: GestoriService,
               private spinner: NgxSpinnerService,
-              private router: Router,) { }
+              private router: Router,
+              private translate: TranslateService,) { }
 
   ngOnInit() {
     this.aRoute.paramMap.subscribe(params => {
@@ -94,6 +98,9 @@ export class GestoreDashboardComponent implements OnInit {
 
     this.chartOpt.xAxis = {
       type: 'category',
+      name: this.translate.instant('DATE'),
+      nameLocation: 'middle',
+      nameGap: 20,
       data: this.movimentiChart.map(itm => {
         const rawDate = itm.dtImportazione || itm.dtImportazione;
         const parsedDate = new Date(rawDate);
@@ -106,10 +113,12 @@ export class GestoreDashboardComponent implements OnInit {
     this.chartOpt.series = [
       {
         type: 'line',
+        name: this.translate.instant('MOVIMENTI_SETTIMANALI'),
         data: this.movimentiChart.map(itm => itm.valueSettimanali),
       },
       {
         type: 'line',
+        name: this.translate.instant('MOVIMENTI_MENSILI'),
         data: this.movimentiChart.map(itm => itm.valueDefinitivi),
       },
     ];
@@ -121,6 +130,9 @@ export class GestoreDashboardComponent implements OnInit {
     this.getQuantitaGestoriChart(this.idGestore);
   }
 
+  /**
+   * REGION DATA
+   */
   // Limite arrivo gestori mensile
   get isMMLimit() {
     if(!this.gestore?.dtArrivoFlussiMmD1) return ''

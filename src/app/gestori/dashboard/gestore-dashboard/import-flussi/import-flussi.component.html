@@ -1,1 +1,49 @@
-<p>import-flussi works!</p>
+<section class="import-gestori-wrap">
+  <ng-container >
+    <!--============================================================================================================================== header -->
+    <div class="my-page-header head">
+      <div class="gestore-name">{{this.movimentio?.dsGestore}}</div>
+      <div class="operations">
+        <button class="btn-img new-gestore" (click)="save()">
+          <img src="./assets/media/icon/save.svg" alt="">
+        </button>
+        <!--<button class="btn-img new-gestore">
+          <img src="./assets/media/icon/.svg" alt="">
+        </button>-->
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="movimentio">
+    <div class="body">
+      <div class="form-control">
+        <input type="date" name="dtMM" id="" [(ngModel)]="movimentio.dtImportMM">
+      </div>
+      <div class="form-control">
+        <input type="radio" name="checkMM" id="" [value]="0" [(ngModel)]="movimentio.fgImportMM">
+        <input type="radio" name="checkMM" id="" [value]="1" [(ngModel)]="movimentio.fgImportMM">
+      </div>
+
+      <div class="form-control">
+        <input type="date" name="dtSS" id="" [(ngModel)]="movimentio.dtImportSS">
+      </div>
+      <div class="form-control">
+        <input type="radio" name="checkSS" id="checkSS" [value]="0" [(ngModel)]="movimentio.fgImportSS">
+        <input type="radio" name="checkSS" id="checkSS" [value]="1" [(ngModel)]="movimentio.fgImportSS">
+      </div>
+
+      <div class="form-control">
+        <div class="title">{{"NOTE_GESTORE" | translate}}</div>
+        <div class="editor">
+          <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" >
+          </ngx-editor-menu>
+          <ngx-editor [editor]="editor" [(ngModel)]="movimentio.note" name="noteGestore">
+          </ngx-editor>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+
+  <app-spinner name="import-flussi-spinner" [fullScreen]="false"></app-spinner>
+</section>

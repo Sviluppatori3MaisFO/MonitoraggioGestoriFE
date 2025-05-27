@@ -42,7 +42,7 @@ export class EditGestoreComponent implements OnInit {
     this.aRoute.paramMap.subscribe(params => {
       const id = params.get('id_gestore');
       if (id !== null) {
-        this.idGestore = +id;
+        this.idGestore = Number(id);
         this.getGestoreMonitorato(this.idGestore);
       }
     });
@@ -50,6 +50,8 @@ export class EditGestoreComponent implements OnInit {
   private getGestoreMonitorato(idGestore: number) {
     this.spinner.show('spinnerLoadDatiGestore');
     this.gestore = null;
+    console.log(this.idGestore)
+
     this.gestoreService.getGestoreMonitoratoByIdGestore(idGestore).subscribe({
       next: res => {
         console.log(res);
@@ -107,5 +109,9 @@ export class EditGestoreComponent implements OnInit {
   }
   public closeEdit () {
     this.location.back();
+  }
+
+  test(eve: any){
+    console.log(eve.checked);
   }
 }

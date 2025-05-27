@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../../auth/auth.service';
 import {GestoriService} from '../../../services/gestori.service';
 import {IGestoreMonitorato} from '../../../services/models/gestori.model';
@@ -15,6 +15,8 @@ export class SideBarComponent implements OnInit {
 
   public openSettings : boolean = false;
   public gestori: IGestoreMonitorato[] = [];
+  public activeGestore: number | null  = null;
+
   get username () {
     return this.authService.account?.name;
   }
@@ -22,21 +24,33 @@ export class SideBarComponent implements OnInit {
   constructor(public router: Router,
               private gestoriService: GestoriService,
               public authService: AuthService,
-              private langService: LanguageService) {
+              private langService: LanguageService,
+              private aRoute: ActivatedRoute,) {
 
   }
 
   ngOnInit() {
+
+    this.aRoute.paramMap.subscribe(params => {
+      const id = params.get('id_gestore');
+      if (id !== null) {
+        console.log('uid' ,id);
+      }
+    });
+    this.getAnGestoriMonitorati()
+  }
+
+  public getAnGestoriMonitorati() {
     this.gestoriService.getAnGestoriMonitorati().subscribe({
       next: res => {
-        this.gestori = res
-        console.log(this.gestori)
+        this.gestori = res;
       },
       error: err => {
         console.error(err);
       }
     })
   }
+
 
   public onGestore(id_Gestore: number | null) {
     if (id_Gestore === null)

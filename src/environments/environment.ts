@@ -5,6 +5,6 @@ export const environment = {
     redirectUri: "http://localhost:4200",
   },
   apiConfiguration: {
-    apiUrl: "http://localhost:5182",
+    apiUrl: "http://bach-2019:2000",
   }
 };

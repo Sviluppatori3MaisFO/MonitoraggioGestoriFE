@@ -8,6 +8,8 @@ import {NgxEchartsModule} from 'ngx-echarts';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SpinnerComponent } from './components/ngx-spinner/spinner.component';
 import {NgxSpinnerComponent} from 'ngx-spinner';
+import { SwitchComponent } from './components/switch/switch.component';
+import { UiSwitchModule } from 'ngx-ui-switch';
 
 @NgModule({
   imports: [
@@ -19,6 +21,7 @@ import {NgxSpinnerComponent} from 'ngx-spinner';
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerComponent,
+    UiSwitchModule,
   ],
   exports: [
     CommonModule,
@@ -29,12 +32,15 @@ import {NgxSpinnerComponent} from 'ngx-spinner';
     SafeHtmlPipe,
     FormsModule,
     ReactiveFormsModule,
+    UiSwitchModule,
+    SwitchComponent,
   ],
   declarations: [
     SideBarComponent,
     HeaderComponent,
     SafeHtmlPipe,
     SpinnerComponent,
+    SwitchComponent,
   ],
   providers: [DatePipe]
 })

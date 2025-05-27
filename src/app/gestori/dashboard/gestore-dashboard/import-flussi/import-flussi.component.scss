@@ -1,0 +1,22 @@
+.import-gestori-wrap {
+  position: relative;
+  height: 100%;
+
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .gestore-name {
+      font-weight: var(--typography-font-weight-bold);
+      font-size: var(--typography-font-size-xl);
+    }
+
+    .operations {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+
+}

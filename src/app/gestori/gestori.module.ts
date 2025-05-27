@@ -26,7 +26,7 @@ import {NgxEditorModule} from 'ngx-editor';
     NgxSpinnerComponent,
     SharedModule,
     NgxEchartsDirective,
-    NgxEditorModule
+    NgxEditorModule,
   ]
 })
 export class GestoriModule {}

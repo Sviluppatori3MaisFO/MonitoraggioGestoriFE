@@ -26,7 +26,8 @@
       border-radius: var(--variable-sidebar-radius-link);
       cursor: pointer;
 
-      &:hover {
+      &:hover,
+      &.active{
         background-color: var(--color-white);
       }
 
