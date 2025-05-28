@@ -15,6 +15,8 @@ export class ImportFlussiComponent implements OnInit {
 
   public idGestore: number | null = null;
   public movimentio: IGestoreUltimoImportazione | null = null;
+  public mmCheck: boolean = false;
+  public ssCheck: boolean = false;
 
   editor: Editor = new Editor();
   toolbar: Toolbar = [

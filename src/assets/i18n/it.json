@@ -46,7 +46,8 @@
   "DATE" : "Data",
   "STATO" : "Stato",
   "TIPO_OPERAZIONE" : "Tipo Operazione",
-  "DATA_OPERAZIONE" : "Data Operazione"
+  "DATA_OPERAZIONE" : "Data Operazione",
+  "IMPORTAZIONE_COMPLETATA" : "Importazione completata"
 }
 
 

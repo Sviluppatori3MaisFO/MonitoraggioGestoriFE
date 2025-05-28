@@ -19,4 +19,21 @@
     }
   }
 
+  .body {
+    display: grid;
+    grid-template-areas: 'MM MM'
+                          'SS SS'
+                        'note note';
+
+    .import-mm {
+      grid-area: MM;
+    }
+    .import-ss {
+      grid-area: SS;
+    }
+    .notes-gestore {
+      grid-area: note;
+    }
+  }
+
 }

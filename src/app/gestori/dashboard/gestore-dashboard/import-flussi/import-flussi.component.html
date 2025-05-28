@@ -16,29 +16,35 @@
 
   <ng-container *ngIf="movimentio">
     <div class="body">
-      <div class="form-control">
-        <input type="date" name="dtMM" id="" [(ngModel)]="movimentio.dtImportMM">
-      </div>
-      <div class="form-control">
-        <input type="radio" name="checkMM" id="" [value]="0" [(ngModel)]="movimentio.fgImportMM">
-        <input type="radio" name="checkMM" id="" [value]="1" [(ngModel)]="movimentio.fgImportMM">
-      </div>
-
-      <div class="form-control">
-        <input type="date" name="dtSS" id="" [(ngModel)]="movimentio.dtImportSS">
-      </div>
-      <div class="form-control">
-        <input type="radio" name="checkSS" id="checkSS" [value]="0" [(ngModel)]="movimentio.fgImportSS">
-        <input type="radio" name="checkSS" id="checkSS" [value]="1" [(ngModel)]="movimentio.fgImportSS">
+      <div class="import-mm">
+        <div class="form-control">
+          <input type="date" name="dtMM" id="" [(ngModel)]="movimentio.dtImportMM">
+        </div>
+        <div class="form-control check">
+          <label for="checkSS">{{'IMPORTAZIONE_COMPLETATA' | translate}}</label>
+          <input type="checkbox" name="checkMM" id="" [(ngModel)]="mmCheck">
+        </div>
       </div>
 
-      <div class="form-control">
-        <div class="title">{{"NOTE_GESTORE" | translate}}</div>
-        <div class="editor">
-          <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" >
-          </ngx-editor-menu>
-          <ngx-editor [editor]="editor" [(ngModel)]="movimentio.note" name="noteGestore">
-          </ngx-editor>
+      <div class="import-ss">
+        <div class="form-control">
+          <input type="date" name="dtSS" id="" [(ngModel)]="movimentio.dtImportSS">
+        </div>
+        <div class="form-control check">
+          <label for="checkSS">{{'IMPORTAZIONE_COMPLETATA' | translate}}</label>
+          <input type="checkbox" name="checkSS" id="" [(ngModel)]="ssCheck">
+        </div>
+      </div>
+
+      <div class="notes-wrap">
+        <div class="form-control">
+          <div class="title">{{"NOTE_GESTORE" | translate}}</div>
+          <div class="editor">
+            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" >
+            </ngx-editor-menu>
+            <ngx-editor [editor]="editor" [(ngModel)]="movimentio.note" name="noteGestore">
+            </ngx-editor>
+          </div>
         </div>
       </div>
     </div>
