@@ -9,7 +9,6 @@ import {NgxSpinnerComponent} from 'ngx-spinner';
 import {SharedModule} from '../shared/shared.module';
 import {NgxEchartsDirective} from 'ngx-echarts';
 import { EditGestoreComponent } from './dashboard/gestore-dashboard/edit-gestore/edit-gestore.component';
-import {QuillModule} from 'ngx-quill';
 import {NgxEditorModule} from 'ngx-editor';
 
 @NgModule({

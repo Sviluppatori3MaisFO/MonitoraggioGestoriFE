@@ -13,26 +13,35 @@
       </div>
     </div>
   </ng-container>
-
   <ng-container *ngIf="movimentio">
     <div class="body">
       <div class="import-mm">
-        <div class="form-control">
-          <input type="date" name="dtMM" id="" [(ngModel)]="movimentio.dtImportMM">
+        <div class="form-control date">
+          <label for="importMM">{{'DATA_IMPORT_MENSILE' | translate}}</label>
+          <p-datepicker [(ngModel)]="movimentio.dtImportMM" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" placeholder="dd/mm/yyyy" id="importMM"></p-datepicker>
         </div>
         <div class="form-control check">
           <label for="checkSS">{{'IMPORTAZIONE_COMPLETATA' | translate}}</label>
-          <input type="checkbox" name="checkMM" id="" [(ngModel)]="mmCheck">
+         <!-- <input type="checkbox" name="checkMM" id="" [(ngModel)]="mmCheck">-->
+
+          <p-selectbutton [options]="stateOptions"
+                          [(ngModel)]="movimentio.fgImportMM"
+                          aria-labelledby="basic"></p-selectbutton>
+
         </div>
       </div>
 
       <div class="import-ss">
-        <div class="form-control">
-          <input type="date" name="dtSS" id="" [(ngModel)]="movimentio.dtImportSS">
+        <div class="form-control date">
+          <label for="importSS">{{'DATA_IMPORT_SETTIMANALE' | translate}}</label>
+          <p-datepicker [(ngModel)]="movimentio.dtImportSS" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" placeholder="dd/mm/yyyy" id="importSS"></p-datepicker>
         </div>
         <div class="form-control check">
           <label for="checkSS">{{'IMPORTAZIONE_COMPLETATA' | translate}}</label>
-          <input type="checkbox" name="checkSS" id="" [(ngModel)]="ssCheck">
+
+          <p-selectbutton [options]="stateOptions"
+                          [(ngModel)]="movimentio.fgImportSS"
+                          aria-labelledby="basic"></p-selectbutton>
         </div>
       </div>
 
@@ -42,7 +51,7 @@
           <div class="editor">
             <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" >
             </ngx-editor-menu>
-            <ngx-editor [editor]="editor" [(ngModel)]="movimentio.note" name="noteGestore">
+            <ngx-editor [editor]="editor" [(ngModel)]="note" name="noteFlusso">
             </ngx-editor>
           </div>
         </div>

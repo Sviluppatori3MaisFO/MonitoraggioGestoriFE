@@ -1,13 +1,3 @@
-export interface IAnGestore {
-  idGestore: number;
-  dsGestore: string;
-  dtRiferimentoQuadratura: string;
-  utenteCreazione?: number;
-  dtCreazione?: Date;
-  utenteModifica?: number;
-  dtModifica?: Date;
-  dsGestoreReport: string;
-}
 export interface IGestoreMonitorato {
   idMonitoraggioGestore: number;
   idGestore: number;
@@ -47,7 +37,7 @@ export interface IGestoreUltimoImportazione {
   dsGestore?: string;
   fgImportSS: number;
   fgImportMM: number;
-  note: string;
+  note?: string;
   dtImportMM: Date;
   dtImportSS?: Date;
 }

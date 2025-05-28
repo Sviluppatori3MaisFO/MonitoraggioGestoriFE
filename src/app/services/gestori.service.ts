@@ -41,6 +41,7 @@ export class GestoriService {
   }
 
   public addNewImportazione (model: IGestoreUltimoImportazione): Observable<boolean> {
+    console.log(model);
     return this.http.post<boolean>(`${this.apiUrl}/addNewImportazione`, model);
   }
 

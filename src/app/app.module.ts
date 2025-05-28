@@ -23,6 +23,9 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AuthComponent } from './auth/auth/auth.component';
+import {providePrimeNG} from 'primeng/config';
+
+import Aura from '@primeng/themes/aura';
 
 
 // msal
@@ -110,7 +113,15 @@ export function httpLoaderFactory(http: HttpClient) {
     },
     MsalService,
     MsalGuard,
-    MsalBroadcastService
+    MsalBroadcastService,
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.darkmode'
+        }
+      }
+    })
   ],
   bootstrap: [AppComponent, MsalRedirectComponent]
 })

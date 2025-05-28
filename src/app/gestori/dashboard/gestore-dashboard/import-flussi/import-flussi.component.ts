@@ -3,7 +3,7 @@ import {GestoriService} from '../../../../services/gestori.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {ActivatedRoute} from '@angular/router';
 import {IGestoreUltimoImportazione} from '../../../../services/models/gestori.model';
-import {Editor, Toolbar} from 'ngx-editor';
+import {Editor, toHTML, Toolbar} from 'ngx-editor';
 
 @Component({
   selector: 'app-import-flussi',
@@ -15,9 +15,9 @@ export class ImportFlussiComponent implements OnInit {
 
   public idGestore: number | null = null;
   public movimentio: IGestoreUltimoImportazione | null = null;
-  public mmCheck: boolean = false;
-  public ssCheck: boolean = false;
+  public note: string = '';
 
+  stateOptions: any[] = [{ label: 'NO', value: 0 },{ label: 'SI', value: 1 }];
   editor: Editor = new Editor();
   toolbar: Toolbar = [
     ['bold', 'italic'],
@@ -39,7 +39,6 @@ export class ImportFlussiComponent implements OnInit {
     this.aRoute.paramMap.subscribe(params => {
       const id = params.get('id_gestore');
       if (id !== null) {
-        console.log(id);
         this.idGestore = Number(id);
         this.getUltimaImportazione()
       }
@@ -68,6 +67,11 @@ export class ImportFlussiComponent implements OnInit {
         }
 
         this.movimentio = data;
+        this.note = data.note!= null ? data.note : '';
+        this.movimentio.dtImportMM = new Date(this.movimentio.dtImportMM);
+        if(this.movimentio.dtImportSS)
+          this.movimentio.dtImportSS = new Date(this.movimentio.dtImportSS);
+
         this.spinner.hide('import-flussi-spinner');
       },
       error: err => {
@@ -82,11 +86,13 @@ export class ImportFlussiComponent implements OnInit {
     if (this.movimentio && this.idGestore != null) {
       this.movimentio.idGestore = this.idGestore
     }
-    console.log(this.idGestore,this.movimentio);
+  this.movimentio.note = this.note;
 
     this.gestoriService.addNewImportazione(this.movimentio).subscribe({
       next: data => {
-        console.log(data);
+        if(data) {
+          this.getUltimaImportazione()
+        }
       },
       error: err => {
         console.error(err);

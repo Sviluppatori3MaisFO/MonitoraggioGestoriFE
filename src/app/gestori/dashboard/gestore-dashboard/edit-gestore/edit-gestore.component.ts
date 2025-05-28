@@ -50,7 +50,6 @@ export class EditGestoreComponent implements OnInit {
   private getGestoreMonitorato(idGestore: number) {
     this.spinner.show('spinnerLoadDatiGestore');
     this.gestore = null;
-    console.log(this.idGestore)
 
     this.gestoreService.getGestoreMonitoratoByIdGestore(idGestore).subscribe({
       next: res => {

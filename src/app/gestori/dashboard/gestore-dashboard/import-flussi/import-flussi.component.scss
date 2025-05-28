@@ -20,19 +20,22 @@
   }
 
   .body {
-    display: grid;
-    grid-template-areas: 'MM MM'
-                          'SS SS'
-                        'note note';
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
 
-    .import-mm {
-      grid-area: MM;
+    .import-mm,
+    .import-ss,
+    .notes-wrap {
+      display: flex;
+      align-items: start;
+      gap: 16px;
     }
-    .import-ss {
-      grid-area: SS;
-    }
-    .notes-gestore {
-      grid-area: note;
+    .form-control {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
     }
   }
 

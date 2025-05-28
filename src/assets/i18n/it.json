@@ -47,7 +47,9 @@
   "STATO" : "Stato",
   "TIPO_OPERAZIONE" : "Tipo Operazione",
   "DATA_OPERAZIONE" : "Data Operazione",
-  "IMPORTAZIONE_COMPLETATA" : "Importazione completata"
+  "IMPORTAZIONE_COMPLETATA" : "Importazione completata",
+  "DATA_IMPORT_MENSILE" : "Data importazione mensile",
+  "DATA_IMPORT_SETTIMANALE" : "Data importazione settimanale"
 }
 
 

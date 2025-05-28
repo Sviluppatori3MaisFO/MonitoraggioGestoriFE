@@ -10,6 +10,8 @@ import { SpinnerComponent } from './components/ngx-spinner/spinner.component';
 import {NgxSpinnerComponent} from 'ngx-spinner';
 import { SwitchComponent } from './components/switch/switch.component';
 import { UiSwitchModule } from 'ngx-ui-switch';
+import {DatePickerModule} from 'primeng/datepicker';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @NgModule({
   imports: [
@@ -22,6 +24,8 @@ import { UiSwitchModule } from 'ngx-ui-switch';
     ReactiveFormsModule,
     NgxSpinnerComponent,
     UiSwitchModule,
+    DatePickerModule,
+    SelectButtonModule
   ],
   exports: [
     CommonModule,
@@ -34,6 +38,8 @@ import { UiSwitchModule } from 'ngx-ui-switch';
     ReactiveFormsModule,
     UiSwitchModule,
     SwitchComponent,
+    DatePickerModule,
+    SelectButtonModule
   ],
   declarations: [
     SideBarComponent,
