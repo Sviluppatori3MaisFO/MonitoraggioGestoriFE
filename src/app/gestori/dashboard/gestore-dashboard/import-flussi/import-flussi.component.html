@@ -17,8 +17,12 @@
     <div class="body">
       <div class="import-mm">
         <div class="form-control date">
-          <label for="importMM">{{'DATA_IMPORT_MENSILE' | translate}}</label>
-          <p-datepicker [(ngModel)]="movimentio.dtImportMM" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" placeholder="dd/mm/yyyy" id="importMM"></p-datepicker>
+          <p-iftalabel>
+            <label for="importMM">{{'DATA_IMPORT_MENSILE' | translate}}</label>
+
+            <p-datepicker [(ngModel)]="movimentio.dtImportMM" [iconDisplay]="'input'" [showIcon]="true" inputId="importMM" placeholder="dd/mm/yyyy" id="importMM">
+            </p-datepicker>
+          </p-iftalabel>
         </div>
         <div class="form-control check">
           <label for="checkSS">{{'IMPORTAZIONE_COMPLETATA' | translate}}</label>

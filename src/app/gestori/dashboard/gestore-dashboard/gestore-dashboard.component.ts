@@ -67,7 +67,6 @@ export class GestoreDashboardComponent implements OnInit {
     this.gestore = null;
     this.gestoriService.getGestoreMonitoratoByIdGestore(idGestore).subscribe({
       next: res => {
-        console.log(res);
         this.gestore = res;
         this.spinner.hide('spinnerLoadDatiGestore');
       },

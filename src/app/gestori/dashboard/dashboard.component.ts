@@ -43,7 +43,6 @@ export class DashboardComponent implements OnInit{
 
   public dateCompare(date_mm?: Date, date_cedis?: Date): boolean {
     if (!date_mm || !date_cedis) return false;
-    console.log(date_mm, date_cedis);
 
     const d1 = new Date(date_mm);
     const d2 = new Date(date_cedis);

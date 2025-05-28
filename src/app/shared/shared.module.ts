@@ -12,6 +12,7 @@ import { SwitchComponent } from './components/switch/switch.component';
 import { UiSwitchModule } from 'ngx-ui-switch';
 import {DatePickerModule} from 'primeng/datepicker';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import {IftaLabelModule} from 'primeng/iftalabel';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     NgxSpinnerComponent,
     UiSwitchModule,
     DatePickerModule,
-    SelectButtonModule
+    SelectButtonModule,
+    IftaLabelModule,
   ],
   exports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     UiSwitchModule,
     SwitchComponent,
     DatePickerModule,
-    SelectButtonModule
+    SelectButtonModule,
+    IftaLabelModule,
   ],
   declarations: [
     SideBarComponent,
