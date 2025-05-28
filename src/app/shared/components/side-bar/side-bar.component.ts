@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Router} from '@angular/router';
 import {AuthService} from '../../../auth/auth.service';
 import {GestoriService} from '../../../services/gestori.service';
-import {IGestoreMonitorato} from '../../../services/models/gestori.model';
 import {LanguageService} from '../../services/language.service';
+import {UtilsService} from '../../../services/utils.service';
+import {ISidebar} from '../../../services/models/utils.model';
 
 @Component({
   selector: 'app-side-bar',
@@ -14,7 +15,7 @@ import {LanguageService} from '../../services/language.service';
 export class SideBarComponent implements OnInit {
 
   public openSettings : boolean = false;
-  public gestori: IGestoreMonitorato[] = [];
+  public gestori: ISidebar[] = [];
   public activeGestore: number | null  = null;
 
   get username () {
@@ -23,25 +24,19 @@ export class SideBarComponent implements OnInit {
 
   constructor(public router: Router,
               private gestoriService: GestoriService,
+              private utilsService: UtilsService,
               public authService: AuthService,
-              private langService: LanguageService,
-              private aRoute: ActivatedRoute,) {
+              private langService: LanguageService,) {
 
   }
 
   ngOnInit() {
 
-    this.aRoute.paramMap.subscribe(params => {
-      const id = params.get('id_gestore');
-      if (id !== null) {
-        console.log('uid' ,id);
-      }
-    });
     this.getAnGestoriMonitorati()
   }
 
   public getAnGestoriMonitorati() {
-    this.gestoriService.getAnGestoriMonitorati().subscribe({
+    this.utilsService.getSidebar().subscribe({
       next: res => {
         this.gestori = res;
       },
@@ -75,5 +70,10 @@ export class SideBarComponent implements OnInit {
   }
   changeLang(lang: string) {
     this.langService.useLang(lang)
+  }
+  public activeRoute() {
+    const segments = this.router.url.split('/');
+    const id = segments.find((seg, i) => segments[i - 1] === 'dashboard');
+    return id ? +id : null;
   }
 }
