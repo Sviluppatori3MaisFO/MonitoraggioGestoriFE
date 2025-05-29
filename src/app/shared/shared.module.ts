@@ -10,9 +10,6 @@ import { SpinnerComponent } from './components/ngx-spinner/spinner.component';
 import {NgxSpinnerComponent} from 'ngx-spinner';
 import { SwitchComponent } from './components/switch/switch.component';
 import { UiSwitchModule } from 'ngx-ui-switch';
-import {DatePickerModule} from 'primeng/datepicker';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import {IftaLabelModule} from 'primeng/iftalabel';
 
 @NgModule({
   imports: [
@@ -25,9 +22,6 @@ import {IftaLabelModule} from 'primeng/iftalabel';
     ReactiveFormsModule,
     NgxSpinnerComponent,
     UiSwitchModule,
-    DatePickerModule,
-    SelectButtonModule,
-    IftaLabelModule,
   ],
   exports: [
     CommonModule,
@@ -40,9 +34,6 @@ import {IftaLabelModule} from 'primeng/iftalabel';
     ReactiveFormsModule,
     UiSwitchModule,
     SwitchComponent,
-    DatePickerModule,
-    SelectButtonModule,
-    IftaLabelModule,
   ],
   declarations: [
     SideBarComponent,
