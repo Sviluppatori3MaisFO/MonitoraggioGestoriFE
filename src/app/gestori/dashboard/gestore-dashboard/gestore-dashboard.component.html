@@ -27,7 +27,7 @@
 
         <ul >
           <li class="email-wrap" [ngStyle]="{'grid-template-rows': gestore.emailGestore2? '1fr 1fr' : '1fr'}">
-            <div>{{ 'EMAIL_DEL_GESTORE' | translate }}: </div>
+            <div><span>{{ 'EMAIL_DEL_GESTORE' | translate }}:</span> </div>
             <div>{{gestore.emailGestore1}}</div>
             <div></div>
             <div>{{gestore.emailGestore2}}</div>
@@ -73,7 +73,7 @@
             </tr>
 
             <!-- SS -->
-            <tr [ngClass]="isSSOver"  *ngIf="gestore?.dtImportSS">
+            <tr [ngClass]="isSSOver"  *ngIf="gestore?.dtImportSS || gestore.dtArrivoFlussiSs">
               <td>{{ "SETTIMANA" | translate }}</td>
               <td>{{ gestore && gestore.dtImportSS? (gestore.dtImportSS| date:'dd / MM') : '-' }}</td>
               <td></td>

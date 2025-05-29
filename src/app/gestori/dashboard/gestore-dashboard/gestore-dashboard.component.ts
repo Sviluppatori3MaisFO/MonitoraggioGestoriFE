@@ -136,8 +136,11 @@ export class GestoreDashboardComponent implements OnInit {
   get isMMLimit() {
     if(!this.gestore?.dtArrivoFlussiMmD1) return ''
     let today = new Date().getDate();
+    let todayMM = new Date().getMonth();
+
     // se il gg 2 non c'e' consideria d1 + 7
     let day2 = this.gestore?.dtArrivoFlussiMmD2? this.gestore?.dtArrivoFlussiMmD2 : this.gestore?.dtArrivoFlussiMmD1+7;
+
     if(this.gestore?.dtArrivoFlussiMmD1 <= today && day2 <= today)
       return 'warning-row'
     else if(day2 < today)

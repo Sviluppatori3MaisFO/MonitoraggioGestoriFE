@@ -4,6 +4,8 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {ActivatedRoute} from '@angular/router';
 import {IGestoreUltimoImportazione} from '../../../../services/models/gestori.model';
 import {Editor, toHTML, Toolbar} from 'ngx-editor';
+import { toZonedTime } from 'date-fns-tz';
+
 
 @Component({
   selector: 'app-import-flussi',
@@ -68,6 +70,7 @@ export class ImportFlussiComponent implements OnInit {
 
         this.movimentio = data;
         this.note = data.note!= null ? data.note : '';
+
         this.movimentio.dtImportMM = new Date(this.movimentio.dtImportMM);
         if(this.movimentio.dtImportSS)
           this.movimentio.dtImportSS = new Date(this.movimentio.dtImportSS);
@@ -86,8 +89,9 @@ export class ImportFlussiComponent implements OnInit {
     if (this.movimentio && this.idGestore != null) {
       this.movimentio.idGestore = this.idGestore
     }
-  this.movimentio.note = this.note;
+    this.movimentio.note = this.note;
 
+    console.log(this.movimentio);
     this.gestoriService.addNewImportazione(this.movimentio).subscribe({
       next: data => {
         if(data) {
@@ -98,6 +102,10 @@ export class ImportFlussiComponent implements OnInit {
         console.error(err);
       }
     })
+  }
+
+  private stripTime(date: Date): Date {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
   }
 
 

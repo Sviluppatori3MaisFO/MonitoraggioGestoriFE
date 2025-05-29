@@ -32,6 +32,10 @@ import Aura from '@primeng/themes/aura';
 const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
 export function MSALInstanceFactory(): IPublicClientApplication {
+  const isIE = typeof window !== 'undefined' &&
+    (window.navigator.userAgent.indexOf('MSIE ') > -1 ||
+      window.navigator.userAgent.indexOf('Trident/') > -1);
+
   return new PublicClientApplication({
     auth: {
       clientId: environment.msalConfig.clientId,

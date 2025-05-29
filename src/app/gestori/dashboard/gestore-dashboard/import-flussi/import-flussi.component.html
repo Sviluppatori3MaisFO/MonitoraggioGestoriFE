@@ -17,12 +17,9 @@
     <div class="body">
       <div class="import-mm">
         <div class="form-control date">
-          <p-iftalabel>
             <label for="importMM">{{'DATA_IMPORT_MENSILE' | translate}}</label>
-
-            <p-datepicker [(ngModel)]="movimentio.dtImportMM" [iconDisplay]="'input'" [showIcon]="true" inputId="importMM" placeholder="dd/mm/yyyy" id="importMM">
+            <p-datepicker [(ngModel)]="movimentio.dtImportMM" [iconDisplay]="'input'" [showIcon]="true" inputId="importMM" placeholder="dd/mm/yyyy" id="importMM" dateFormat="dd/mm/yy" >
             </p-datepicker>
-          </p-iftalabel>
         </div>
         <div class="form-control check">
           <label for="checkSS">{{'IMPORTAZIONE_COMPLETATA' | translate}}</label>
@@ -38,7 +35,7 @@
       <div class="import-ss">
         <div class="form-control date">
           <label for="importSS">{{'DATA_IMPORT_SETTIMANALE' | translate}}</label>
-          <p-datepicker [(ngModel)]="movimentio.dtImportSS" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" placeholder="dd/mm/yyyy" id="importSS"></p-datepicker>
+          <p-datepicker [(ngModel)]="movimentio.dtImportSS" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" placeholder="dd/mm/yyyy" id="importSS"  dateFormat="dd/mm/yy" [hourFormat]="'24'"></p-datepicker>
         </div>
         <div class="form-control check">
           <label for="checkSS">{{'IMPORTAZIONE_COMPLETATA' | translate}}</label>

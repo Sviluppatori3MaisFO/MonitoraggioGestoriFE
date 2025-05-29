@@ -1,10 +1,10 @@
 export const environment = {
   msalConfig: {
-    clientId: "39fc3291-1b13-46a7-bab1-ef1faf8ab663",
+    clientId: "030a10ac-93c9-4f82-ac52-cfe5fca007a7",
     authority: "https://login.microsoftonline.com/9e220e66-b958-406e-8dee-9626333d77a5",
-    redirectUri: "http://localhost:4200",
+    redirectUri: "https://bach-2019:2004",
   },
   apiConfiguration: {
-    apiUrl: "http://bach-2019:2000",
+    apiUrl: "https://bach-2019:2002",
   }
 };
